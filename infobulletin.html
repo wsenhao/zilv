@@ -21,6 +21,7 @@
 				  <div class="form-group">
 				    <label for="">举报网站名称：</label>
 				    <input type="text" class="form-control" >
+                    <button type="button" class="btn"  id="selectWebBtn">选择网站</button>
 				  </div>
 				  <br/><br/>
 				  <div class="form-group">
@@ -34,7 +35,7 @@
 				  <br/><br/>
 				  <div class="form-group">
 				    <label for="">信息状态:</label>
-				    <select class="form-control"></select>
+				    <select class="form-control" class="infoState"></select>
 				  </div>
 				</form>
     		</div>
@@ -57,11 +58,13 @@
 				  <div class="form-group">
 				    <label for="">账户名称:</label>
 				    <input type="text" class="form-control" >
+                    <button type="button" class="btn" id="selecUserBtn">选择用户</button>
 				  </div>
-				  <div class="form-group">
-				    <label for="">信息批次</label>
-				    <select class="form-control"></select>
-				  </div>
+                  <br/><br/>
+                  <div class="form-group">
+                    <label for="">信息批次</label>
+                    <select class="form-control" class="infoState"></select>
+                  </div>
 				</form>
     		</div>
     		<div class="boxthr">
@@ -91,12 +94,12 @@
 				</form>
     		</div>
     		<div class="infobtn">
-    			<button type="button"><i class="glyphicon glyphicon-search"></i>  查询</button>
-    			<button type="button" id="reviseInfoBtn"><i class="glyphicon glyphicon-edit"></i>  修改</button>
-    			<button type="button"><i class="glyphicon glyphicon-remove-sign"></i>  信息通报</button>
-    			<button type="button"><i class="glyphicon glyphicon-list-alt"></i>  已沟通</button>
-    			<button type="button" id="passEmailBtn"><i class="glyphicon glyphicon-envelope"></i>  发送邮件</button>
-    			<button type="button"><i class="glyphicon glyphicon-open"></i>  导出Excel</button>
+    			<button type="button" class="buttonBlue"><i class="glyphicon glyphicon-search"></i>  查询</button>
+    			<button type="button" class="buttonOrange" id="reviseInfoBtn"><i class="glyphicon glyphicon-edit"></i>  修改</button>
+    			<button type="button" class="buttonRed"><i class="glyphicon glyphicon-remove-sign"></i>  信息通报</button>
+    			<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-list-alt"></i>  已沟通</button>
+    			<button type="button" class="buttonBlue" id="passEmailBtn"><i class="glyphicon glyphicon-envelope"></i>  发送邮件</button>
+    			<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-open"></i>  导出Excel</button>
     		</div>
     	</div>
     	
@@ -126,7 +129,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeC">
                                     <td class="center">0</td>
@@ -136,7 +139,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -146,7 +149,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -156,7 +159,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -166,7 +169,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -176,7 +179,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -186,7 +189,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -196,7 +199,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -206,7 +209,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -216,7 +219,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -226,7 +229,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -236,7 +239,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -246,7 +249,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -256,7 +259,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -266,7 +269,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -276,7 +279,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -286,7 +289,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -296,7 +299,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -306,7 +309,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -316,7 +319,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -326,7 +329,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -336,7 +339,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -346,7 +349,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -356,7 +359,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -366,7 +369,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -376,7 +379,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -386,7 +389,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -396,7 +399,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -406,7 +409,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -416,7 +419,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -426,7 +429,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -436,7 +439,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -446,7 +449,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -456,7 +459,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -466,7 +469,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -476,7 +479,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -486,7 +489,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -496,7 +499,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -506,7 +509,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -516,7 +519,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -526,7 +529,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -536,7 +539,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -546,7 +549,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeC">
                                     <td class="center">0</td>
@@ -556,7 +559,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -566,7 +569,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeA">
                                     <td class="center">0</td>
@@ -576,7 +579,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                                 <tr class="gradeX">
                                     <td class="center">0</td>
@@ -586,107 +589,7 @@
                                     <td class="center">0</td>
                                     <td class="center">Win 95+</td>
                                     <td class="center">-</td>
-                                    <td class="center">U</td>
-                                </tr>
-                                <tr class="gradeC">
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                </tr>
-                                <tr class="gradeC">
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                </tr>
-                                <tr class="gradeX">
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                </tr>
-                                <tr class="gradeX">
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                </tr>
-                                <tr class="gradeX">
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                </tr>
-                                <tr class="gradeC">
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                </tr>
-                                <tr class="gradeC">
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                </tr>
-                                <tr class="gradeU">
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
+                                    <td class="center"><input type="checkbox"/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -697,6 +600,57 @@
     </div>
     
     <div class="modal" id="modal">
+
+        <!--网站名称-->
+        <div id="websit">
+            <div class="head">网站名称</div>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="">网站名称关键字:</label>
+                    <input type="text" class="form-control" placeholder="">
+                    <button type="button" class="btn">查询</button>
+                </div>
+            </form>
+            <ul class="websitlist">
+                <li>
+                    <input type="checkbox"/> 百度
+                </li>
+                <li>
+                    <input type="checkbox"/> 百度
+                </li>
+                <li>
+                    <input type="checkbox"/> 百度
+                </li>
+                <li>
+                    <input type="checkbox"/> 百度
+                </li>
+                <li>
+                    <input type="checkbox"/> 百度
+                </li>
+                <br/>
+                <br/>
+                <li>
+                    <input type="checkbox"/> 百度
+                </li>
+                <li>
+                    <input type="checkbox"/> 百度
+                </li>
+                <li>
+                    <input type="checkbox"/> 百度
+                </li>
+                <li>
+                    <input type="checkbox"/> 百度
+                </li>
+                <li>
+                    <input type="checkbox"/> 百度
+                </li>
+            </ul>
+            <div class="webkitbnlist">
+                <button type="button" id="websitSubmitbtn">提交</button>
+                <button type="button" id="websitCancelbtn">取消</button>
+            </div>
+        </div>
+
     	<!--信息补全-->
     	<div class="modalbg">
     		<div class="head"></div>
@@ -810,6 +764,55 @@
 				</form>
     		</div>
     	</div>
+
+        <!--用户列表-->
+        <div id="userList">
+            <div class="head">用户列表</div>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="">用户名称关键字:</label>
+                    <input type="text" class="form-control" placeholder="">
+                    <button type="button" class="btn">查询</button>
+                </div>
+            </form>
+
+            <ul class="userlistweb">
+                <li>
+                    <input type="checkbox"/> 王二
+                </li>
+                <li>
+                    <input type="checkbox"/> 王二
+                </li>
+                <li>
+                    <input type="checkbox"/> 王二
+                </li>
+                <li>
+                    <input type="checkbox"/> 王二
+                </li>
+                <li>
+                    <input type="checkbox"/> 王二
+                </li>
+                <br/>
+                <br/>
+                <li>
+                    <input type="checkbox"/> 王二
+                </li>
+                <li>
+                    <input type="checkbox"/> 王二
+                </li>
+                <li>
+                    <input type="checkbox"/> 王二
+                </li>
+                <li>
+                    <input type="checkbox"/> 王二
+                </li>
+            </ul>
+            <div class="userlistbtn">
+                <button type="button" id="userSubmitbtn">提交</button>
+                <button type="button" id="userCancelbtn">取消</button>
+            </div>
+        </div>
+
     </div>
     
     
@@ -850,7 +853,29 @@
           $("#selectboxCan").click(function(){
           	$(".selectbox").hide();
           });
-          
+
+            //选择网站名称点击事件
+            $("#selectWebBtn").click(function(){
+                $("#modal").show();
+                $("#websit").show();
+                $(".modalbg").hide();
+                $("#userList").hide();
+            });
+            $("#websitCancelbtn").click(function(){
+                $("#modal").hide();
+            });
+
+            //选择用户点击事件
+            $("#selecUserBtn").click(function(){
+                $("#modal").show();
+                $("#websit").hide();
+                $(".modalbg").hide();
+                $("#userList").show();
+            });
+            $("#userCancelbtn").click(function(){
+                $("#modal").hide();
+            });
+
         });
         
         //日期范围限制
