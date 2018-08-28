@@ -1,0 +1,237 @@
+p{
+	padding: 0;
+	margin: 0;
+}
+ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.wrap{
+	padding: 30px 0px 0px 30px;
+	min-width: 1000px;
+}
+.wrap .info{
+	width: 95%;
+	height: 230px;
+	padding: 20px 0px 0px 20px;
+	margin-bottom: 20px;
+	background: #fff;
+	position: relative;
+}
+.wrap .info .boxone{
+	width: 35%;
+	float: left;
+}
+.wrap .info .boxtwo{
+	width: 32%;
+	float: left;
+}
+.wrap .info .boxthr{
+	width: 32%;
+	float: left;
+}
+.wrap .info .boxone .form-group input{
+	width: 100px;
+	height: 25px;
+}
+.wrap .info .boxone .form-group select{
+	height: 25px;
+}
+.wrap .info .boxone button{
+	height: 25px;
+	line-height: 25px;
+	padding-top: 0;
+	color: #fff;
+	background: #3E79ED !important;
+}
+.wrap .info .boxtwo .form-group input{
+	width: 100px;
+	height: 25px;
+}
+.wrap .info .boxtwo .form-group select{
+	height: 25px;
+}
+.wrap .info .boxthr .form-group input{
+	width: 100px;
+	height: 25px;
+}
+.wrap .info .boxthr .form-group select{
+	height: 25px;
+}
+.wrap .info .infobtn{
+	width: auto;
+	height: 30px;
+	position: absolute;
+	right: 20px;
+	bottom: 10px;
+	text-align: right;
+	text-align: -webkit-right;
+	text-align: -moz-right;
+}
+.wrap .info .infobtn button{
+	width: 100px;
+	height: 25px;
+	background: #EDEDED;
+	border: 0;
+	color: #9E9E9E;
+	border-radius: 5px;
+	box-shadow: -2px 0 0 rgba(62,121,237, 0.08), /*左边阴影*/ 2px 0 0 rgba(62,121,237, 0.08), /*右部阴影*/ 0 7px 10px rgba(62,121,237, 0.2);
+}
+.wrap .info .infobtn #passEmailBtn{
+	background: #3E79ED;
+	color: #fff;
+}
+
+.wrap .row{
+	background: #fff;
+	padding: 0;
+}
+.wrap .row .col-sm-6{
+	padding: 0;
+}
+.wrap .row .col-sm-12{
+	padding: 0;
+}
+.wrap .row .table thead{
+	background: #427CEA;
+	color: #fff;
+}
+.wrap .row .table thead tr th{
+	border-color: #427CEA;
+}
+
+/*模态框*/
+.modal{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.03);
+}
+.modal .modalbg{
+	width: 53%;
+	min-width: 320px;
+	height: 320px;
+    margin: 10% 0px 0px 20%;
+	background: #fff;
+	position: relative;
+	display: none;
+}
+.modal .modalbg .head{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	background: #427CEA;
+}
+.modal .modalbg .modalinfo{
+	padding-left: 30px;
+	border-bottom: 2px solid #ddd;
+}
+.modal .modalbg .modalinfo p{
+	margin: 6px 0;
+}
+.modal .modalbg .modalinfo p sapn{
+	color: #427CEA;
+}
+.modal .modalbg .form-inline{
+	padding-left: 30px;
+	padding-top: 5px;
+}
+.modal .modalbg .form-group{
+	margin-bottom: 8px;
+}
+.modal .modalbg .form-group input[type='text']{
+	width: 150px;
+	height: 20px;
+	padding: 0;
+}
+.modal .modalbg .form-group select{
+	height: 20px;
+}
+.modal .modalbg #loginSelect{
+	padding: 0;
+	height: 20px;
+	line-height: 20px;
+	background: #427CEA;
+	color: #fff;
+	border: 0;
+	border-radius: 5px;
+	padding-left: 3px;
+	padding-right: 3px;
+	font-size: 12px;
+}
+.modal .modalbg .handlebtn{
+	width: 100%;
+	margin-top: 15px;
+}
+.modal .modalbg .handlebtn button{
+	width: 100px;
+	height: 25px;
+	line-height: 25px;
+	float: right;
+	border: 0;
+	border-radius: 5px;
+}
+.modal .modalbg .handlebtn #submitBtn{
+	background: #427CEA;
+	color: #fff;
+	 box-shadow: -2px 0 0 rgba(62,121,237, 0.08), /*左边阴影*/ 2px 0 0 rgba(62,121,237, 0.08), /*右部阴影*/ 0 7px 10px rgba(62,121,237, 0.2);
+}
+.modal .modalbg .handlebtn #cancelBtn{
+	background: #DBDBDB;
+	color: #9B9B9B;
+	margin-right: 30px;
+	margin-left: 10px;
+	 box-shadow: -2px 0 0 rgba(219,219,219, 0.08), /*左边阴影*/ 2px 0 0 rgba(219,219,219, 0.08), /*右部阴影*/ 0 7px 10px rgba(219,219,219, 0.2);
+}
+.modal .modalbg .selectbox{
+	position: absolute;
+	right: 0;
+	bottom: -85px;
+	width: 280px;
+	height: 190px;
+	padding: 10px;
+	background: #fff;
+	border: 1px solid #DBDBDB;
+	display: none;
+}
+.modal .modalbg .selectbox p{
+	text-align: center;
+}
+.modal .modalbg .selectbox .form-inline{
+	padding-left: 0px;
+}
+.modal .modalbg .selectbox .form-group input[type="text"] {
+    width: 160px;
+    height: 20px;
+    padding: 0px;
+}
+.modal .modalbg .selectbox .form-group button{
+	height: 20px;
+	line-height: 20px;
+	float: right;
+	border: 0;
+	padding: 0;
+	padding-left: 5px;
+	padding-right: 5px;
+	background: #427CEA;
+	font-size: 12px;
+	color: #fff;
+	 box-shadow: -2px 0 0 rgba(62,121,237, 0.08), /*左边阴影*/ 2px 0 0 rgba(62,121,237, 0.08), /*右部阴影*/ 0 7px 10px rgba(62,121,237, 0.2);
+}
+.modal .modalbg .selectbox .form-group #selectboxSure{
+	margin-left: 80px;
+	width: 80px;
+	border-radius: 3px;
+}
+.modal .modalbg .selectbox .form-group #selectboxCan{
+	margin-left: 5px;
+	width: 80px;
+	border-radius: 3px;
+	background: #DBDBDB;
+}
+
