@@ -40,12 +40,12 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-top: 17px;">
                                 <img src="img/user2-160x160.jpg" class="user-image" alt="">
-                                <span class="hidden-xs">admin</span>
+                                <span class="hidden-xs" id ="accountName">admin</span>
                             </a>
                             <ul class="dropdown-menu pull-right">
                                 <li><a class="menuItem" data-id="userInfo" href="">个人信息</a></li>
                                 <li><a href="javascript:void();">密码修改</a></li>
-                                <li><a href="">退出系统</a></li>
+                                <li><a href="login.html">退出系统</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -69,24 +69,24 @@
 	                		</li>
 	                		<li>
 	                			<a class="menuItem" data-id="" href="userinfo.html">
-	                				<font size="3">账户信息数据管理</font>
+	                				<font size="3" class="role_invisited">账户信息数据管理</font>
 	                			</a>
 	                		</li>
 	                	</ul>
 	                </li>
 	                <li class="treeview">
-	                	<a href="#">
+	                	<a href="#" class="user_invisited">
 	                		<span><font size="4">信息处理平台</font></span>
 	                		<i class="fa fa-angle-left pull-right"></i>
 	                	</a>
 	                	<ul class="treeview-menu">
 	                		<li>
-	                			<a class="menuItem" data-id="" href="infomanage.html">
+	                			<a class="menuItem" data-id="" href="infomanage.html" class="user_invisited">
 	                				<font size="3">信息管理流程</font>
 	                			</a>
 	                		</li>
 	                		<li>
-	                			<a class="menuItem" data-id="" href="infobulletin.html">
+	                			<a class="menuItem" data-id="" href="infobulletin.html" class="user_invisited">
 	                				<font size="3">信息通报流程</font>
 	                			</a>
 	                		</li>
@@ -114,6 +114,32 @@
     		    $(this).css({"color":"#fff"});
 	    		$(".treeview-menu li a").not( $(this) ).css({"color":"#B8B6D5"});
 	    	});
+
+    		//权限控制
+            function getParams(key) {
+                var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) {
+                    return unescape(r[2]);
+                }
+                return null;
+            };
+
+            var role = getParams("role");
+
+
+            if (role == "manager"){
+                $("#accountName").text("manager");
+                $(".role_invisited").hide();
+                return;
+            }
+
+            if (role == "user"){
+                $("#accountName").text("user");
+                $(".user_invisited").hide();
+                return;
+            }
+
     	});
     </script>
 </body>
