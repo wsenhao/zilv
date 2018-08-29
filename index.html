@@ -117,17 +117,14 @@
 
     		//权限控制
             function getParams(key) {
-                var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+                var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)"); //  /(^|&)role=([^&]*)(&|$)/
                 var r = window.location.search.substr(1).match(reg);
                 if (r != null) {
                     return unescape(r[2]);
                 }
                 return null;
             };
-
             var role = getParams("role");
-
-
             if (role == "manager"){
                 $("#accountName").text("manager");
                 $(".role_invisited").hide();
