@@ -227,6 +227,62 @@
 	        // 使用刚指定的配置项和数据显示图表。
 	        myChart.setOption(option);
         };
+        
+        
+        
+         //分类二级联动
+        
+        var aArray = new Array();
+			aArray[0] = "网络招嫖";
+			aArray[1] = "淫秽信息";
+			aArray[2] = "低俗信息";
+		
+
+			var bArray = new Array(4);
+			bArray[0] = "低价出售";
+			bArray[1] = "彩票预测";
+			bArray[2] = "虚假网站";
+			bArray[3] = "交易平台";
+			
+			var cArray = new Array();
+    		cArray[0] = "木马盗窃";
+			cArray[1] = "钓鱼网站";
+			cArray[2] = "其他盗窃";
+			
+			var arr = new Array();
+			arr[0] = aArray;
+			arr[1] = bArray;
+			arr[2] = cArray;
+			
+    		function categrey(obj){
+    			var cityArray = arr[obj.value];
+				var citySelect = document.getElementsByName("two")[0];
+				citySelect.innerHTML = "<option value='0'>--请选择详细分类--</option>"
+				for(var i = 0; i < cityArray.length; i++) {
+					citySelect.innerHTML += "<option>--" + cityArray[i] + "--</option>"
+				}
+    		}
+    		
+    		
+    		//用户选着功能
+    		function selectUser(aim){
+    			var arr = $(".userlistweb input:checked");
+    			var content = $(".usernameList");
+    			$.each(arr, function(index) {
+    				var str = content.html();
+    				content.html(str+arr[index].value+",");
+    			});
+    			//隐藏列表框
+    			$("#modal").hide();
+    			$(".userlistweb input:checked").prop("checked","");
+    		}
+        
+        
+        
+        
+        
+        
+        
     </script>
 </head>
 <body class="bg">
@@ -252,7 +308,7 @@
                                 </li>
                                 <li>
                                 	<span>账户名称：</span>
-                                	<span class="username">李四</span>
+                                	<span class="usernameList"></span>
 									<button type="button" class="btn05" id="selecUserBtn">选择账户</button>
                                 </li>
                             </ul>
@@ -319,16 +375,16 @@
 									  <div class="form-group">
 									    <label for="exampleInputName2">信息分类：</label>
 									     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-									    <select class="form-control"style="width:180px; height: 30px;">
-									    	<option>1</option>
-									    	<option>1</option>
+									    <select class="form-control"style="width:180px; height: 30px;" onchange="categrey(this)">
+									    	<option value="0">淫秽色情</option>
+									    	<option value="1">网络诈骗</option>
+									    	<option value="2">网络盗窃</option>
 									    </select>
 									  </div>
 									  &nbsp;&nbsp;&nbsp;
 									  <div class="form-group">
-									    <select class="form-control" style="width:180px; height: 30px;">
-									    	<option>1</option>
-									    	<option>1</option>
+									    <select class="form-control" style="width:180px; height: 30px;" id="two" name="two">
+									    	
 									    </select>
 									  </div>
 									</form>
@@ -366,36 +422,36 @@
 				</form>
 				<ul class="userlistweb">
 					<li>
-                    	<input type="checkbox"/> wanghui
+                    	<input type="checkbox" name="username" value="王XX"/> 王XX
 					</li>
 					<li>
-	                    <input type="checkbox"/> 王二
+	                    <input type="checkbox" name="username"value="小明"/> 小明
 					</li>
 					<li>
-	                    <input type="checkbox"/> 王二
+	                    <input type="checkbox" name="username" value="小花"/> 小花
 					</li>
 					<li>
-	                    <input type="checkbox"/> 王二
+	                    <input type="checkbox" name="username" value="小雪"/> 小雪
 					</li>
 					<li>
-	                    <input type="checkbox"/> 王二
+	                    <input type="checkbox" name="username" value="大明"/> 大明
 					</li>
 					<li>
-	                    <input type="checkbox"/> 王二
+	                    <input type="checkbox" name="username" value="张泽X"/> 张泽X
 					</li>
 					<li>
-	                    <input type="checkbox"/> 王二
+	                    <input type="checkbox" name="username" value="李维X"/> 李维X
 					</li>
 					<li>
-	                    <input type="checkbox"/> 王二
+	                    <input type="checkbox" name="username" value="宋天"/> 宋天
 					</li>
 					<li>
-	                    <input type="checkbox"/> 王二
+	                    <input type="checkbox" name="username" value="斗X"/> 斗X
 					</li>
 					
 				</ul>
 	    		<div class="userlistbtn">
-	    			<button type="button" id="userSubmitbtn">提交</button>
+	    			<button type="button" id="userSubmitbtn"onclick="selectUser(this)">提交</button>
 	    			<button type="button" id="userCancelbtn">取消</button>
 	    		</div>
     	</div>
