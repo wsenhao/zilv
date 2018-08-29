@@ -75,10 +75,8 @@
     			$(".websitlist input:checked").prop("checked","");
     		}
 			
-			
-			//显示内同
-			$(function (){
-				$.getJSON("data/source.json",function(data){
+			//显示表格内容
+			  $.getJSON("data/source.json",function(data){
 					var con = $(".mainbody");
 					con.html("");
 					$.each(data,function(index,obj){
@@ -90,8 +88,6 @@
 						con.append(tr);
 					})
 				})
-			      
-			})
 			
 			
 	
@@ -547,6 +543,7 @@
           	$("#websit").hide();
           	$("#userList").hide();
           });
+          
           //点击信息重置取消按钮关闭模态框
           $("#cancelBtn").click(function(){
           	$("#modal").hide();
@@ -648,6 +645,8 @@
           $("#userCancelbtn").click(function(){
           	$("#modal").hide();
           });
+          
+          
         });
         
         //日期范围限制
@@ -676,6 +675,9 @@
         };
         laydate(start);
         laydate(end);
+        
+        
+      
     </script>
 </body>
 </html>
