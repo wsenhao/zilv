@@ -9,6 +9,79 @@
     <link rel="stylesheet" href="css/dataTables/dataTables.bootstrap.css">
     
 </head>
+
+<script>
+	
+	//分类二级联动
+        
+        var aArray = new Array();
+			aArray[0] = "网络招嫖";
+			aArray[1] = "淫秽信息";
+			aArray[2] = "低俗信息";
+		
+
+			var bArray = new Array(4);
+			bArray[0] = "低价出售";
+			bArray[1] = "彩票预测";
+			bArray[2] = "虚假网站";
+			bArray[3] = "交易平台";
+			
+			var cArray = new Array();
+    		cArray[0] = "木马盗窃";
+			cArray[1] = "钓鱼网站";
+			cArray[2] = "其他盗窃";
+			
+			var arr = new Array();
+			arr[0] = aArray;
+			arr[1] = bArray;
+			arr[2] = cArray;
+			
+    		function categrey(obj){
+    			var cityArray = arr[obj.value];
+				var citySelect = document.getElementsByName("two")[0];
+				citySelect.innerHTML = "<option value='0'>--请选择详细分类--</option>"
+				for(var i = 0; i < cityArray.length; i++) {
+					citySelect.innerHTML += "<option>--" + cityArray[i] + "--</option>"
+				}
+    		}
+    		
+    		
+    		//用户选着功能
+    		function selectUser(aim){
+    			var arr = $(".userlistweb input:checked");
+    			var content = $(".usernameList");
+    			content.html("");
+    			$.each(arr, function(index) {
+    				var str = content.html();
+    				content.html(str+arr[index].value+",");
+    			});
+    			//隐藏列表框
+    			$("#modal").hide();
+    			$(".userlistweb input:checked").prop("checked","");
+    		}
+	
+    		
+    		//网站选着功能
+    		function selectWeb(aim){
+    			var arr = $(".websitlist input:checked");
+    			var content = $(".webList");
+    			content.html("");
+    			$.each(arr, function(index) {
+    				var str = content.html();
+    				content.html(str+arr[index].value+",");
+    			});
+    			//隐藏列表框
+    			$("#modal").hide();
+    			$(".websitlist input:checked").prop("checked","");
+    		}
+	
+	
+	
+	
+	
+	
+	
+</script>
 <body class="body">
     <div class="wrap">
     	<div class="info">
@@ -18,12 +91,7 @@
 				    <label for="">信息ID：</label>
 				    <input type="text" class="form-control">
 				  </div>
-				  <br/><br/>
-				  <div class="form-group">
-				    <label for="">举报网站名称：</label>
-				    <input type="text" class="form-control" >
-				  </div>
-				  <button type="button" class="btn" id="selectWebBtn">选择网站名称</button>
+				  
 				  <br/><br/>
 				  <div class="form-group">
 				    <label for="">信息处置时间:</label>
@@ -34,19 +102,25 @@
 				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
 				  </div>
 				  <br/><br/>
+				 
 				  <div class="form-group">
 				    <label for="">通报状态:</label>
-				    <select class="form-control"></select>
+				    <select class="form-control">
+				    	<option value="1">待沟通</option>
+				    	<option value="1">已沟通</option>
+				    	<option value="1">沟通异常</option>
+				    </select>
 				  </div>
 				  <br/><br/>
 				  <div class="form-group">
-				    <label for="">抽检状态:</label>
-				    <select class="form-control"></select>
+				     <span>网站名称：</span>
+                    <span class="webList"></span>
 				  </div>
+				  <button type="button" class="btn" id="selectWebBtn">选择网站名称</button>
 				  <br/><br/>
 				  <div class="form-group">
-				    <label for="">账户名称:</label>
-				    <input type="text" class="form-control" >
+				    <span>账户名称：</span>
+                    <span class="usernameList"></span>
 				  </div>
 				  <button type="button" class="btn" id="selecUserBtn">选择账户</button>
 				</form>
@@ -66,25 +140,32 @@
 				    <label for="">至</label>
 				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
 				  </div>
+				   <br/><br/>
+				  <div class="form-group">
+				    <label for="">用户信息状态:</label>
+				    <select class="form-control">
+				    	<option value="1">待处置</option>
+				    	<option value="1">待审核</option>
+				    	<option value="1">审核通过</option>
+				    	<option value="1">异常信息</option>
+				    </select>
+				  </div>
 				  <br/><br/>
 				  <div class="form-group">
 				    <label for="">信息分类:</label>
-				    <select class="form-control"></select>
+				    <select class="form-control" onchange="categrey(this)" style="width: 120px;height: 30px;">
+				    	<option value="0">淫秽色情</option>
+						<option value="1">网络诈骗</option>
+						<option value="2">网络盗窃</option>
+				    </select>
 				  </div>
 				  <div class="form-group">
 				    <label for="">  </label>
-				    <select class="form-control"></select>
+				    <select class="form-control" id="two" name="two" style="width: 160px;height: 30px;">
+				    </select>
 				  </div>
 				  <br/><br/>
-				  <div class="form-group">
-				    <label for="">通报状态:</label>
-				    <select class="form-control"></select>
-				  </div>
-				  <br/><br/>
-				  <div class="form-group">
-				    <label for="">通报状态:</label>
-				    <select class="form-control"></select>
-				  </div>
+				
 				</form>
     		</div>
     		<div class="boxthr">
@@ -103,20 +184,26 @@
 				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
 				  </div>
 				  <br/><br/>
-				  <div class="form-group">
-				    <label for="">通报状态:</label>
-				    <select class="form-control"></select>
-				  </div>
-				  <br /><br/>
-				  <div class="form-group">
-				    <label for="">用户信息状态:</label>
-				    <select class="form-control"></select>
-				  </div>
+				  	  <div class="form-group">
+					    <label for="">信息补全状态:</label>
+					    <select class="form-control">
+					    	<option value="1">信息不存在</option>
+				    		<option value="1">信息备案</option>
+				    		<option value="1">信息未备案</option>
+				    		<option value="1">以匹配用户</option>
+					    	<option value="1">未匹配用</option>
+					    	<option value="1">待补全信息</option>
+					    </select>
+					  </div>
 				  <br/><br/>
-				  <div class="form-group">
-				    <label for="">账户名称:</label>
-				    <input class="form-control">
-				  </div>
+					  <div class="form-group">
+					    <label for="">抽检状态:</label>
+					    <select class="form-control">
+					    	<option value="1">抽检正常</option>
+					    	<option value="1">抽检异常</option>
+					    </select>
+					  </div>
+				  <br /><br/>
 				</form>
     		</div>
     		<div class="infobtn">
@@ -142,10 +229,10 @@
                                     <th>信息编号</th>
                                     <th>举报网站名称</th>
                                     <th>举报网站信息URL</th>
-                                    <th>信息推动时间</th>
-                                    <th>信息最后处理时间</th>
+                                    <th>信息举报时间</th>
                                     <th>举报类型</th>
-                                    <th>状态</th>
+                                    <th>描述</th>
+                                    <th>选择</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -604,41 +691,39 @@
 			  </div>
 			</form>
 			<ul class="websitlist">
-				<li>
-                    <input type="checkbox"/> 百度
-				</li>
-				<li>
-                    <input type="checkbox"/> 百度
-				</li>
-				<li>
-                    <input type="checkbox"/> 百度
-				</li>
-				<li>
-                    <input type="checkbox"/> 百度
-				</li>
-				<li>
-                    <input type="checkbox"/> 百度
-				</li>
-                <br/>
-                <br/>
-				<li>
-                    <input type="checkbox"/> 百度
-				</li>
-				<li>
-                    <input type="checkbox"/> 百度
-				</li>
-				<li>
-                    <input type="checkbox"/> 百度
-				</li>
-				<li>
-                    <input type="checkbox"/> 百度
-				</li>
-				<li>
-                    <input type="checkbox"/> 百度
-				</li>
+				 <li>
+                    <input type="checkbox" name="webName" value="网站一"/> 网站一
+                </li>
+                <li>
+                    <input type="checkbox" name="webName" value="网站二"/> 网站二
+                </li>
+                <li>
+                    <input type="checkbox" name="webName" value="网站三"/> 网站三
+                </li>
+                <li>
+                    <input type="checkbox" name="webName" value="网站四"/> 网站四
+                </li>
+                <li>
+                    <input type="checkbox" name="webName" value="网站五"/> 网站五
+                </li>
+                <li>
+                    <input type="checkbox" name="webName" value="网站六"/> 网站六
+                </li>
+                <li>
+                    <input type="checkbox" name="webName" value="网站七"/> 网站七
+                </li>
+                <li>
+                    <input type="checkbox" name="webName" value="网站八"/> 网站八
+                </li>
+                <li>
+                    <input type="checkbox" name="webName" value="网站九"/> 网站九
+                </li>
+                <li>
+                    <input type="checkbox" name="webName" value="网站十"/> 网站十
+                </li>
 			</ul>
     		<div class="webkitbnlist">
-    			<button type="button" id="websitSubmitbtn">提交</button>
+    			<button type="button" id="websitSubmitbtn" onclick="selectWeb(this)">提交</button>
     			<button type="button" id="websitCancelbtn">取消</button>
     		</div>
     	</div>
@@ -656,37 +741,35 @@
 
 			<ul class="userlistweb">
 				<li>
-                    <input type="checkbox"/> 王二
+	            	<input type="checkbox" name="username" value="用户一"/> 用户一
 				</li>
 				<li>
-                    <input type="checkbox"/> 王二
+	                <input type="checkbox" name="username"value="用户二"/> 用户二
 				</li>
 				<li>
-                    <input type="checkbox"/> 王二
+	                <input type="checkbox" name="username" value="用户三"/> 用户三
 				</li>
 				<li>
-                    <input type="checkbox"/> 王二
+	                <input type="checkbox" name="username" value="用户四"/> 用户四
 				</li>
 				<li>
-                    <input type="checkbox"/> 王二
-				</li>
-                <br/>
-                <br/>
-				<li>
-                    <input type="checkbox"/> 王二
+	                <input type="checkbox" name="username" value="用户五"/> 用户五
 				</li>
 				<li>
-                    <input type="checkbox"/> 王二
+	                <input type="checkbox" name="username" value="用户六"/> 用户六
 				</li>
 				<li>
-                    <input type="checkbox"/> 王二
+	                <input type="checkbox" name="username" value="用户七"/> 用户七
 				</li>
 				<li>
-                    <input type="checkbox"/> 王二
+	                <input type="checkbox" name="username" value="用户八"/> 用户八
+				</li>
+				<li>
+	                <input type="checkbox" name="username" value="用户九"/> 用户九
 				</li>
 			</ul>
     		<div class="userlistbtn">
-    			<button type="button" id="userSubmitbtn">提交</button>
+    			<button type="button" id="userSubmitbtn" onclick="selectUser(this)">提交</button>
     			<button type="button" id="userCancelbtn">取消</button>
     		</div>
     	</div>

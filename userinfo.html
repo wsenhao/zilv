@@ -9,6 +9,41 @@
     <link rel="stylesheet" href="css/dataTables/dataTables.bootstrap.css">
     
 </head>
+<script>
+	//分类二级联动
+        
+        var aArray = new Array();
+			aArray[0] = "网络招嫖";
+			aArray[1] = "淫秽信息";
+			aArray[2] = "低俗信息";
+		
+
+			var bArray = new Array(4);
+			bArray[0] = "低价出售";
+			bArray[1] = "彩票预测";
+			bArray[2] = "虚假网站";
+			bArray[3] = "交易平台";
+			
+			var cArray = new Array();
+    		cArray[0] = "木马盗窃";
+			cArray[1] = "钓鱼网站";
+			cArray[2] = "其他盗窃";
+			
+			var arr = new Array();
+			arr[0] = aArray;
+			arr[1] = bArray;
+			arr[2] = cArray;
+			
+    		function categrey(obj){
+    			var cityArray = arr[obj.value];
+				var citySelect = document.getElementsByName("two")[0];
+				citySelect.innerHTML = "<option value='0'>--请选择详细分类--</option>"
+				for(var i = 0; i < cityArray.length; i++) {
+					citySelect.innerHTML += "<option>--" + cityArray[i] + "--</option>"
+				}
+    		}
+	
+</script>
 <body class="body">
     <div class="wrap">
     	<div class="info">
@@ -42,16 +77,16 @@
 				<form class="form-inline bottom">
 				  <div class="form-group">
 				    <label for="">信息分类：</label>
-				    <select class="form-control" >
-				    	<option>信息分类</option>
-				    	<option>信息分类</option>
+				    <select class="form-control" onchange="categrey(this)" style="width: 120px;">
+				    	<option value="0">淫秽色情</option>
+						<option value="1">网络诈骗</option>
+						<option value="2">网络盗窃</option>
 				    </select>
 				  </div>
 				  <div class="form-group">
 				  	<label for="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-				    <select class="form-control" >
-				    	<option>信息分类</option>
-				    	<option>信息分类</option>
+				    <select class="form-control" id="two" name="two" style="width: 120px;">
+				    	
 				    </select>
 				  </div>
 				</form>
