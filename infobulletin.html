@@ -83,7 +83,7 @@
 						var tr = $('<tr class="gradeX">'+
 						'<td class="center" name="id">'+obj.id+'</td><td class="center" name="SVID">'+obj.SVID+'</td><td class="center">'+obj.NET_NAME+'</td>'+
 						'<td class="center">'+obj.NET_URL+'</td><td class="center">'+obj.BODY_FIXED_PHONE+'['+obj.BODY_PHONE+']</td> <td class="center">'+obj.BODY_EMAIL+'</td>'+
-						'<td class="center">'+obj.REPORT_TYPE+'</td><td class="center"><input type="checkbox"/></td>'
+						'<td class="center">'+obj.REPORT_TYPE+'</td><td class="center"><input type="checkbox" data-id="'+obj.id+'"/></td>'
 						+' </tr>');
 						con.append(tr);
 					})
@@ -194,7 +194,7 @@
     		</div>
     		<div class="infobtn">
     			<button type="button" class="buttonBlue"><i class="glyphicon glyphicon-search"></i>  查询</button>
-    			<button type="button" class="buttonOrange" id="reviseInfoBtn"><i class="glyphicon glyphicon-edit"></i>  修改</button>
+    			<button type="button" class="buttonOrange" id="reviseInfoBtn" ><i class="glyphicon glyphicon-edit"></i>  修改</button>
     			<button type="button" class="buttonRed"><i class="glyphicon glyphicon-remove-sign"></i>  信息通报</button>
     			<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-list-alt"></i>  已沟通</button>
     			<button type="button" class="buttonBlue" id="passEmailBtn"><i class="glyphicon glyphicon-envelope"></i>  发送邮件</button>
@@ -465,8 +465,35 @@
           
           //点击修改触发事件
           $("#reviseInfoBtn").click(function(){
-          	$("#modal").show();
-          	$(".modalbg").show();
+            var chkBoxes = $('#editable').find('input:checked');
+            if (chkBoxes.length == 0) {         //如果不勾选弹出警告框
+              alert('请选择一个信息');
+              return false;
+            }
+            var dataId;
+            $(chkBoxes).each(function () {
+                dataId = $(this).attr('data-id');
+            });
+			$("#modal").html("");
+
+			$.getJSON("data/source.json",function(data){
+				var con = $(".modalbg");
+				con.html("");
+				$.each(data,function(index,obj){
+				  var tr = $('<tr class="gradeX">'+
+					  '<td class="center" name="id">'+obj.id+'</td><td class="center" name="SVID">'+obj.SVID+'</td><td class="center">'+obj.NET_NAME+'</td>'+
+					  '<td class="center">'+obj.NET_URL+'</td><td class="center">'+obj.BODY_FIXED_PHONE+'['+obj.BODY_PHONE+']</td> <td class="center">'+obj.BODY_EMAIL+'</td>'+
+					  '<td class="center">'+obj.REPORT_TYPE+'</td><td class="center"><input type="checkbox" data-id="'+obj.id+'"/></td>'
+					  +' </tr>');
+				  con.append(tr);
+				})
+			})
+
+
+
+
+			$("#modal").show();
+			$(".modalbg").show();
           });
           $("#cancelBtn").click(function(){
           	$("#modal").hide();
