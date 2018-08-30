@@ -33,31 +33,31 @@ ul{
 }
 .wrap .info .boxone .form-group input{
 	width: 100px;
-	height: 25px;
+	height: 30px;
 }
 .wrap .info .boxone .form-group select{
-	height: 25px;
+	height: 30px;
 }
 .wrap .info .boxone button{
-	height: 25px;
-	line-height: 25px;
+	height: 30px;
+	line-height: 30px;
 	padding-top: 0;
 	color: #fff;
 	background: #3E79ED !important;
 }
 .wrap .info .boxtwo .form-group input{
 	width: 100px;
-	height: 25px;
+	height: 30px;
 }
 .wrap .info .boxtwo .form-group select{
-	height: 25px;
+	height: 30px;
 }
 .wrap .info .boxthr .form-group input{
 	width: 100px;
-	height: 25px;
+	height: 30px;
 }
 .wrap .info .boxthr .form-group select{
-	height: 25px;
+	height: 30px;
 }
 .wrap .info .infobtn{
 	width: auto;
