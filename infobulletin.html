@@ -561,15 +561,23 @@
 
                       }
                   })
+                  
+                    //点击信息重置取消按钮关闭模态框
+			          $("#cancelBtn").click(function(){
+			          	$("#modal").hide();
+			          });
+			          //点击信息重置取消按钮关闭模态框
+			          $("#submitBtn").click(function(){
+			          	$("#modal").hide();
+			          });
               })
 
               $("#modal").show();
               $(".modalbg").show();
           });
-          $("#cancelBtn").click(function(){
-              alert("1");
-          	$("#modal").hide();
-          });
+          
+          
+          
           //点击选择
           $("#loginSelect").click(function(){
           	$(".selectbox").show();
