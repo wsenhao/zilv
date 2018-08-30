@@ -1,561 +1,537 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>自律平台综合管理系统</title>
-    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/infobulletin.css">
-    <link rel="stylesheet" href="css/dataTables/dataTables.bootstrap.css">
-    
-</head>
-<script src="js/jquery/jQuery-2.2.0.min.js"></script>
-<script>
-	//分类二级联动
-        
-        var aArray = new Array();
-			aArray[0] = "网络招嫖";
-			aArray[1] = "淫秽信息";
-			aArray[2] = "低俗信息";
-		
 
-			var bArray = new Array(4);
-			bArray[0] = "低价出售";
-			bArray[1] = "彩票预测";
-			bArray[2] = "虚假网站";
-			bArray[3] = "交易平台";
-			
-			var cArray = new Array();
-    		cArray[0] = "木马盗窃";
-			cArray[1] = "钓鱼网站";
-			cArray[2] = "其他盗窃";
-			
-			var arr = new Array();
-			arr[0] = aArray;
-			arr[1] = bArray;
-			arr[2] = cArray;
-			
-    		function categrey(obj){
-    			var cityArray = arr[obj.value];
-				var citySelect = document.getElementsByName("two")[0];
-				citySelect.innerHTML = "<option value='0'>--请选择详细分类--</option>"
-				for(var i = 0; i < cityArray.length; i++) {
-					citySelect.innerHTML += "<option>--" + cityArray[i] + "--</option>"
-				}
-    		}
-    		
-    		
-    		//用户选着功能
-    		function selectUser(aim){
-    			var arr = $(".userlistweb input:checked");
-    			var content = $(".usernameList");
-    			content.html("");
-    			$.each(arr, function(index) {
-    				var str = content.html();
-    				content.html(str+arr[index].value+",");
-    			});
-    			//隐藏列表框
-    			$("#modal").hide();
-    			$(".userlistweb input:checked").prop("checked","");
-    		}
-	
-    		
-    		//网站选着功能
-    		function selectWeb(aim){
-    			var arr = $(".websitlist input:checked");
-    			var content = $(".webList");
-    			content.html("");
-    			$.each(arr, function(index) {
-    				var str = content.html();
-    				content.html(str+arr[index].value+",");
-    			});
-    			//隐藏列表框
-    			$("#modal").hide();
-    			$(".websitlist input:checked").prop("checked","");
-    		}
-    		
-    		
-    		//显示表格内容
-			  $.getJSON("data/source.json",function(data){
-					var con = $(".mainbody");
-					con.html("");
-					$.each(data,function(index,obj){
-						var tr = $('<tr class="gradeX">'+
-						'<td class="center" name="id">'+obj.id+'</td><td class="center" name="SVID">'+obj.SVID+'</td><td class="center">'+obj.NET_NAME+'</td>'+
-						'<td class="center">'+obj.NET_URL+'</td><td class="center">'+obj.BODY_FIXED_PHONE+'['+obj.BODY_PHONE+']</td> <td class="center">'+obj.BODY_EMAIL+'</td>'+
-						'<td class="center">'+obj.REPORT_TYPE+'</td><td class="center"><input type="checkbox" data-id="'+obj.id+'"/></td>'
-						+' </tr>');
-						con.append(tr);
-					})
-				})
-	
-</script>
-<body class="body">
-    <div class="wrap">
-    	<div class="info">
-    		<div class="boxone">
-    			<form class="form-inline">
-				  <div class="form-group">
-				    <label for="">信息ID：</label>
-				    <input type="text" class="form-control" value="你好">
-				  </div>
-				  <br/><br/>
-				  <div class="form-group">
-				    <span>网站名称：</span>
-                    <span class="webList"></span>
-                    <button type="button" class="btn"  id="selectWebBtn">选择网站</button>
-				  </div>
-				  <br/><br/>
-				  <div class="form-group">
-				    <label for="">信息处置时间:</label>
-				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
-				  </div>
-				  <div class="form-group">
-				    <label for="">至</label>
-				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
-				  </div>
-				  <br/><br/>
-				  <div class="form-group">
-				    <label for="">信息状态:</label>
-				    <select class="form-control" class="infoState"style="height: 30px; width: 120px;">
-				    	<option value="1">待沟通</option>
-				    	<option value="1">已沟通</option>
-				    	<option value="1">沟通异常</option>
-				    </select>
-				  </div>
-				</form>
-    		</div>
-    		<div class="boxtwo">
-    			<form class="form-inline">
-				  <div class="form-group">
-				    <label for="">信息编号:</label>
-				    <input type="text" class="form-control">
-				  </div>
-				  <br/><br/>
-				  <div class="form-group">
-				    <label for="">举报时间:</label>
-				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
-				  </div>
-				  <div class="form-group">
-				    <label for="">至</label>
-				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
-				  </div>
-				  <br/><br/>
-				  <div class="form-group">
-				    <span>账户名称：</span>
-                    <span class="usernameList"></span>
-                    <button type="button" class="btn" id="selecUserBtn">选择用户</button>
-				  </div>
-                  <br/><br/>
-                  <div class="form-group">
-                    <label for="">信息批次</label>
-                    <select class="form-control" class="infoState" style="height: 30px; width: 120px;">
-                    	<option value="1">1</option>
-				    	<option value="2">2</option>
-				    	<option value="3">3</option>
-				    	<option value="4">4</option>
-				    	<option value="5">5</option>
-				    	<option value="6">6</option>
-                    </select>
-                  </div>
-				</form>
-    		</div>
-    		<div class="boxthr">
-    			<form class="form-inline">
-				  <div class="form-group">
-				    <label for="">举报信息URL:</label>
-				    <input type="text" class="form-control">
-				  </div>
-				  <br/><br/>
-				  <div class="form-group">
-				    <label for="">信息接收时间:</label>
-				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
-				  </div>
-				  <div class="form-group">
-				    <label for="">至</label>
-				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
-				  </div>
-				  <br/><br/>
-				  <div class="form-group">
-				    <label for="">信息分类:</label>
-				     <select class="form-control" onchange="categrey(this)" style="width: 120px;height: 30px;">
-				    	<option value="0">淫秽色情</option>
-						<option value="1">网络诈骗</option>
-						<option value="2">网络盗窃</option>
-				    </select>
-				  </div>
-				  <div class="form-group">
-				    <label for="">至</label>
-				    <select class="form-control" id="two" name="two" style="width: 160px;height: 30px;">
-				    	
-				    </select>
-				  </div>
-				</form>
-    		</div>
-    		<div class="infobtn">
-    			<button type="button" class="buttonBlue"><i class="glyphicon glyphicon-search"></i>  查询</button>
-    			<button type="button" class="buttonOrange" id="reviseInfoBtn" ><i class="glyphicon glyphicon-edit"></i>  修改</button>
-    			<button type="button" class="buttonRed"><i class="glyphicon glyphicon-remove-sign"></i>  信息通报</button>
-    			<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-list-alt"></i>  已沟通</button>
-    			<button type="button" class="buttonBlue" id="passEmailBtn"><i class="glyphicon glyphicon-envelope"></i>  发送邮件</button>
-    			<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-open"></i>  导出Excel</button>
-    		</div>
-    	</div>
-    	
-    	<div class="row" style="width: 95%;padding: 20px;">
-            <div class="col-sm-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <table class="table table-striped table-bordered table-hover " id="editable">
-                            <thead>
-                                <tr>
-                                    <th>信息ID</th>
-                                    <th>信息编号</th>
-                                    <th>举报网站名称</th>
-                                    <th>举报网站信息URL</th>
-                                    <th>联系方式</th>
-                                    <th>Email</th>
-                                    <th>举报类型</th>
-                                    <th>选择</th>
-                                </tr>
-                            </thead>
-                            <tbody class="mainbody" >
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal" id="modal">
+	<head>
+		<meta charset="utf-8">
+		<title>自律平台综合管理系统</title>
+		<link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/infobulletin.css">
+		<link rel="stylesheet" href="css/dataTables/dataTables.bootstrap.css">
 
-        <!--网站名称-->
-        <div id="websit">
-            <div class="head">网站名称</div>
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="">网站名称关键字:</label>
-                    <input type="text" class="form-control" placeholder="">
-                    <button type="button" class="btn">查询</button>
-                </div>
-            </form>
-            <ul class="websitlist">
-                <li>
-                    <input type="checkbox" name="webName" value="网站一"/> 网站一
-                </li>
-                <li>
-                    <input type="checkbox" name="webName" value="网站二"/> 网站二
-                </li>
-                <li>
-                    <input type="checkbox" name="webName" value="网站三"/> 网站三
-                </li>
-                <li>
-                    <input type="checkbox" name="webName" value="网站四"/> 网站四
-                </li>
-                <li>
-                    <input type="checkbox" name="webName" value="网站五"/> 网站五
-                </li>
-                <li>
-                    <input type="checkbox" name="webName" value="网站六"/> 网站六
-                </li>
-                <li>
-                    <input type="checkbox" name="webName" value="网站七"/> 网站七
-                </li>
-                <li>
-                    <input type="checkbox" name="webName" value="网站八"/> 网站八
-                </li>
-                <li>
-                    <input type="checkbox" name="webName" value="网站九"/> 网站九
-                </li>
-                <li>
-                    <input type="checkbox" name="webName" value="网站十"/> 网站十
-                </li>
-            </ul>
-            <div class="webkitbnlist">
-                <button type="button" id="websitSubmitbtn" onclick="selectWeb(this)">提交</button>
-                <button type="button" id="websitCancelbtn">取消</button>
-            </div>
-        </div>
+	</head>
+	<script src="js/jquery/jQuery-2.2.0.min.js"></script>
+	<script>
+		//分类二级联动
 
-    	<!--信息补全-->
-    	<div class="modalbg">
-    		<div class="head"></div>
-    		<div class="modalinfo">
-    			<p>信息编号：<span>XNHSHIDKIEI</span></p>
-    			<p>信息类型：<span>涉黄信息</span></p>
-    		</div>
-    		<form class="form-inline">
-			  <div class="form-group">
-			    <label for="">信息是否存在：</label>
-			    <label class="radio-inline">
+		var aArray = new Array();
+		aArray[0] = "网络招嫖";
+		aArray[1] = "淫秽信息";
+		aArray[2] = "低俗信息";
+
+		var bArray = new Array(4);
+		bArray[0] = "低价出售";
+		bArray[1] = "彩票预测";
+		bArray[2] = "虚假网站";
+		bArray[3] = "交易平台";
+
+		var cArray = new Array();
+		cArray[0] = "木马盗窃";
+		cArray[1] = "钓鱼网站";
+		cArray[2] = "其他盗窃";
+
+		var arr = new Array();
+		arr[0] = aArray;
+		arr[1] = bArray;
+		arr[2] = cArray;
+
+		function categrey(obj) {
+			var cityArray = arr[obj.value];
+			var citySelect = document.getElementsByName("two")[0];
+			citySelect.innerHTML = "<option value='0'>--请选择详细分类--</option>"
+			for(var i = 0; i < cityArray.length; i++) {
+				citySelect.innerHTML += "<option>--" + cityArray[i] + "--</option>"
+			}
+		}
+
+		//用户选着功能
+		function selectUser(aim) {
+			var arr = $(".userlistweb input:checked");
+			var content = $(".usernameList");
+			content.html("");
+			$.each(arr, function(index) {
+				var str = content.html();
+				content.html(str + arr[index].value + ",");
+			});
+			//隐藏列表框
+			$("#modal").hide();
+			$(".userlistweb input:checked").prop("checked", "");
+		}
+
+		//网站选着功能
+		function selectWeb(aim) {
+			var arr = $(".websitlist input:checked");
+			var content = $(".webList");
+			content.html("");
+			$.each(arr, function(index) {
+				var str = content.html();
+				content.html(str + arr[index].value + ",");
+			});
+			//隐藏列表框
+			$("#modal").hide();
+			$(".websitlist input:checked").prop("checked", "");
+		}
+
+		//显示表格内容
+		$.getJSON("data/source.json", function(data) {
+			var con = $(".mainbody");
+			con.html("");
+			$.each(data, function(index, obj) {
+				var tr = $('<tr class="gradeX">' +
+					'<td class="center" name="id">' + obj.id + '</td><td class="center" name="SVID">' + obj.SVID + '</td><td class="center">' + obj.NET_NAME + '</td>' +
+					'<td class="center">' + obj.NET_URL + '</td><td class="center">' + obj.BODY_FIXED_PHONE + '[' + obj.BODY_PHONE + ']</td> <td class="center">' + obj.BODY_EMAIL + '</td>' +
+					'<td class="center">' + obj.REPORT_TYPE_NAME + '</td><td class="center"><input type="checkbox"/></td>' +
+					' </tr>');
+				con.append(tr);
+			})
+		})
+	</script>
+
+	<body class="body">
+		<div class="wrap">
+			<div class="info">
+				<div class="boxone">
+					<form class="form-inline">
+						<div class="form-group">
+							<label for="">信息ID：</label>
+							<input type="text" class="form-control" value="你好">
+						</div>
+
+						<br/><br/>
+						<div class="form-group">
+							<label for="">信息处置时间:</label>
+							<input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+						</div>
+						<div class="form-group">
+							<label for="">至</label>
+							<input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+						</div>
+						<br/><br/>
+
+						<div class="form-group">
+							<span>账户名称：</span>
+							<span class="usernameList"></span>
+							<button type="button" class="btn" id="selecUserBtn">选择用户</button>
+						</div>
+						<br/><br/>
+						<div class="form-group">
+							<span>网站名称：</span>
+							<span class="webList"></span>
+							<button type="button" class="btn" id="selectWebBtn">选择网站</button>
+						</div>
+					</form>
+				</div>
+				<div class="boxtwo">
+					<form class="form-inline">
+						<div class="form-group">
+							<label for="">信息编号:</label>
+							<input type="text" class="form-control">
+						</div>
+						<br/><br/>
+						<div class="form-group">
+							<label for="">举报时间:</label>
+							<input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+						</div>
+						<div class="form-group">
+							<label for="">至</label>
+							<input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+						</div>
+						<br/><br/>
+						<div class="form-group">
+							<label for="">信息批次</label>
+							<select class="form-control" class="infoState" style="height: 30px; width: 120px;">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+							</select>
+						</div>
+						<br/><br/>
+						<div class="form-group">
+							<label for="">信息状态:</label>
+							<select class="form-control" class="infoState" style="height: 30px; width: 120px;">
+								<option value="1">待沟通</option>
+								<option value="1">已沟通</option>
+								<option value="1">沟通异常</option>
+							</select>
+						</div>
+					</form>
+				</div>
+				<div class="boxthr">
+					<form class="form-inline">
+						<div class="form-group">
+							<label for="">举报信息URL:</label>
+							<input type="text" class="form-control">
+						</div>
+						<br/><br/>
+						<div class="form-group">
+							<label for="">信息接收时间:</label>
+							<input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+						</div>
+						<div class="form-group">
+							<label for="">至</label>
+							<input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+						</div>
+						<br/><br/>
+						<div class="form-group">
+							<label for="">信息分类:</label>
+							<select class="form-control" onchange="categrey(this)" style="width: 120px;height: 30px;">
+								<option value="0">淫秽色情</option>
+								<option value="1">网络诈骗</option>
+								<option value="2">网络盗窃</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="">至</label>
+							<select class="form-control" id="two" name="two" style="width: 160px;height: 30px;">
+
+							</select>
+						</div>
+					</form>
+				</div>
+				<div class="infobtn">
+					<button type="button" class="buttonBlue"><i class="glyphicon glyphicon-search"></i>  查询</button>
+					<button type="button" class="buttonOrange" id="reviseInfoBtn"><i class="glyphicon glyphicon-edit"></i>  修改</button>
+					<button type="button" class="buttonRed"><i class="glyphicon glyphicon-remove-sign"></i>  信息通报</button>
+					<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-list-alt"></i>  已沟通</button>
+					<button type="button" class="buttonBlue" id="passEmailBtn"><i class="glyphicon glyphicon-envelope"></i>  发送邮件</button>
+					<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-open"></i>  导出Excel</button>
+				</div>
+			</div>
+
+			<div class="row" style="width: 95%;padding: 20px;">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-content">
+							<table class="table table-striped table-bordered table-hover " id="editable">
+								<thead>
+									<tr>
+										<th>信息ID</th>
+										<th>信息编号</th>
+										<th>举报网站名称</th>
+										<th>举报网站信息URL</th>
+										<th>联系方式</th>
+										<th>Email</th>
+										<th>举报类型</th>
+										<th>选择</th>
+									</tr>
+								</thead>
+								<tbody class="mainbody">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal" id="modal">
+
+			<!--网站名称-->
+			<div id="websit">
+				<div class="head">网站名称</div>
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="">网站名称关键字:</label>
+						<input type="text" class="form-control" placeholder="">
+						<button type="button" class="btn">查询</button>
+					</div>
+				</form>
+				<ul class="websitlist">
+					<li>
+						<input type="checkbox" name="webName" value="网站一" /> 网站一
+					</li>
+					<li>
+						<input type="checkbox" name="webName" value="网站二" /> 网站二
+					</li>
+					<li>
+						<input type="checkbox" name="webName" value="网站三" /> 网站三
+					</li>
+					<li>
+						<input type="checkbox" name="webName" value="网站四" /> 网站四
+					</li>
+					<li>
+						<input type="checkbox" name="webName" value="网站五" /> 网站五
+					</li>
+					<li>
+						<input type="checkbox" name="webName" value="网站六" /> 网站六
+					</li>
+					<li>
+						<input type="checkbox" name="webName" value="网站七" /> 网站七
+					</li>
+					<li>
+						<input type="checkbox" name="webName" value="网站八" /> 网站八
+					</li>
+					<li>
+						<input type="checkbox" name="webName" value="网站九" /> 网站九
+					</li>
+					<li>
+						<input type="checkbox" name="webName" value="网站十" /> 网站十
+					</li>
+				</ul>
+				<div class="webkitbnlist">
+					<button type="button" id="websitSubmitbtn" onclick="selectWeb(this)">提交</button>
+					<button type="button" id="websitCancelbtn">取消</button>
+				</div>
+			</div>
+
+			<!--信息补全-->
+			<div class="modalbg">
+				<div class="head"></div>
+				<div class="modalinfo">
+					<p>信息编号：<span>XNHSHIDKIEI</span></p>
+					<p>信息类型：<span>涉黄信息</span></p>
+				</div>
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="">信息是否存在：</label>
+						<label class="radio-inline">
 				  <input type="radio" name="inlineRadioOptions" value="option1"> 是
 				</label>
-				<label class="radio-inline">
+						<label class="radio-inline">
 				  <input type="radio" name="inlineRadioOptions" value="option1"> 否
 				</label>&nbsp;&nbsp;
-				<label for="">是否查找到实体：</label>
-			    <label class="radio-inline">
+						<label for="">是否查找到实体：</label>
+						<label class="radio-inline">
 				  <input type="radio" name="inlineR" value="option1"> 是
 				</label>
-				<label class="radio-inline">
+						<label class="radio-inline">
 				  <input type="radio" name="inlineR" value="option1"> 否
 				</label>
-			  </div>
-			  <br /> 
-			  <div class="form-group">
-			    <label for="">所属主体名称：</label>
-			    <input type="text" class="form-control" placeholder="该条信息所属主体名称">
-			  </div>&nbsp;&nbsp;
-			  <div class="form-group">
-			    <label for="">所属主体URL：</label>
-			    <input type="text" class="form-control" placeholder="该条信息所属主体URL">
-			  </div>
-			  <br />
-			  <div class="form-group">
-			    <label for="">主体固定电话：</label>
-			    <input type="text" class="form-control" placeholder="联系主体固定电话">
-			  </div>&nbsp;&nbsp;
-			  <div class="form-group">
-			    <label for="">主体负责人手机：</label>
-			    <input type="text" class="form-control" placeholder="联系人手机号码">
-			  </div>
-			  <br />
-			  <div class="form-group">
-			    <label for="">联系邮箱：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-			    <input type="text" class="form-control" placeholder="联系邮箱">
-			  </div>&nbsp;&nbsp;
-			  <div class="form-group">
-			    <label for="">账号名称：</label>
-			    <input type="text" class="form-control" placeholder="信息所属主体账号名称">
-			    <button type="button" id="loginSelect">选择</button>
-			  </div>
-			  <br />
-			  <div class="form-group">
-			    <label for="">信息类别：</label>
-			    <select></select>
-			  </div>
-			  <div class="form-group">
-			    <select></select>
-			  </div>
-			  <div class="form-group">
-			    <label for="">处理意见：</label>
-			    <select></select>
-			  </div>
-			  <br />
-			  
-			  <div class="form-group">
-			    <label for="">沟通Message：</label>
-			    <input type="text" class="form-control">
-			  </div>
-			</form>
-    		<div class="handlebtn">
-    			<button id='cancelBtn'>取消</button>
-    			<button id='submitBtn'>提交</button>
-    		</div>
-    		<div class="selectbox">
-				<p>账号管理</p>
-				<form class="form-inline">
-				  <div class="form-group">
-				    <label for="">账号名称:</label>
-				    <input type="text" class="form-control" placeholder="会更具补充信息自动查询">
-				    <button type="button" class="btn">选择</button>
-				  </div>
-				  <br />
-				  <div class="form-group">
-				    <label for="">是否使用</label>
-				    <label class="radio-inline">
+					</div>
+					<br />
+					<div class="form-group">
+						<label for="">所属主体名称：</label>
+						<input type="text" class="form-control" placeholder="该条信息所属主体名称">
+					</div>&nbsp;&nbsp;
+					<div class="form-group">
+						<label for="">所属主体URL：</label>
+						<input type="text" class="form-control" placeholder="该条信息所属主体URL">
+					</div>
+					<br />
+					<div class="form-group">
+						<label for="">主体固定电话：</label>
+						<input type="text" class="form-control" placeholder="联系主体固定电话">
+					</div>&nbsp;&nbsp;
+					<div class="form-group">
+						<label for="">主体负责人手机：</label>
+						<input type="text" class="form-control" placeholder="联系人手机号码">
+					</div>
+					<br />
+					<div class="form-group">
+						<label for="">联系邮箱：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+						<input type="text" class="form-control" placeholder="联系邮箱">
+					</div>&nbsp;&nbsp;
+					<div class="form-group">
+						<label for="">账号名称：</label>
+						<input type="text" class="form-control" placeholder="信息所属主体账号名称">
+						<button type="button" id="loginSelect">选择</button>
+					</div>
+					<br />
+					<div class="form-group">
+						<label for="">信息类别：</label>
+						<select></select>
+					</div>
+					<div class="form-group">
+						<select></select>
+					</div>
+					<div class="form-group">
+						<label for="">处理意见：</label>
+						<select></select>
+					</div>
+					<br />
+
+					<div class="form-group">
+						<label for="">沟通Message：</label>
+						<input type="text" class="form-control">
+					</div>
+				</form>
+				<div class="handlebtn">
+					<button id='cancelBtn'>取消</button>
+					<button id='submitBtn'>提交</button>
+				</div>
+				<div class="selectbox">
+					<p>账号管理</p>
+					<form class="form-inline">
+						<div class="form-group">
+							<label for="">账号名称:</label>
+							<input type="text" class="form-control" placeholder="会更具补充信息自动查询">
+							<button type="button" class="btn">选择</button>
+						</div>
+						<br />
+						<div class="form-group">
+							<label for="">是否使用</label>
+							<label class="radio-inline">
 					  <input type="radio" name="yes" value="option1">是
 					</label>
-					<label class="radio-inline">
+							<label class="radio-inline">
 					  <input type="radio" name="yes" value="option2">否
 					</label>
-				  </div>
-				  <br />
-				  <div class="form-group">
-				    <label for="">账号名称:</label>
-				    <input type="text" class="form-control" placeholder="">
-				  </div>
-				  <br />
-				  <div class="form-group">
-				    <label for="">账号密码:</label>
-				    <input type="text" class="form-control" placeholder="">
-				  </div>
-				  <br />
-				  <div class="form-group">
-				    <button type="button" id="selectboxSure">确认</button>
-				  </div>
-				  <div class="form-group">
-				    <button type="button" id="selectboxCan">取消</button>
-				  </div>
+						</div>
+						<br />
+						<div class="form-group">
+							<label for="">账号名称:</label>
+							<input type="text" class="form-control" placeholder="">
+						</div>
+						<br />
+						<div class="form-group">
+							<label for="">账号密码:</label>
+							<input type="text" class="form-control" placeholder="">
+						</div>
+						<br />
+						<div class="form-group">
+							<button type="button" id="selectboxSure">确认</button>
+						</div>
+						<div class="form-group">
+							<button type="button" id="selectboxCan">取消</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<!--用户列表-->
+			<div id="userList">
+				<div class="head">用户列表</div>
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="">用户名称关键字:</label>
+						<input type="text" class="form-control" placeholder="">
+						<button type="button" class="btn">查询</button>
+					</div>
 				</form>
-    		</div>
-    	</div>
 
-        <!--用户列表-->
-        <div id="userList">
-            <div class="head">用户列表</div>
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="">用户名称关键字:</label>
-                    <input type="text" class="form-control" placeholder="">
-                    <button type="button" class="btn">查询</button>
-                </div>
-            </form>
+				<ul class="userlistweb">
+					<li>
+						<input type="checkbox" name="username" value="用户一" /> 用户一
+					</li>
+					<li>
+						<input type="checkbox" name="username" value="用户二" /> 用户二
+					</li>
+					<li>
+						<input type="checkbox" name="username" value="用户三" /> 用户三
+					</li>
+					<li>
+						<input type="checkbox" name="username" value="用户四" /> 用户四
+					</li>
+					<li>
+						<input type="checkbox" name="username" value="用户五" /> 用户五
+					</li>
+					<li>
+						<input type="checkbox" name="username" value="用户六" /> 用户六
+					</li>
+					<li>
+						<input type="checkbox" name="username" value="用户七" /> 用户七
+					</li>
+					<li>
+						<input type="checkbox" name="username" value="用户八" /> 用户八
+					</li>
+					<li>
+						<input type="checkbox" name="username" value="用户九" /> 用户九
+					</li>
+				</ul>
+				<div class="userlistbtn">
+					<button type="button" id="userSubmitbtn" onclick="selectUser(this)">提交</button>
+					<button type="button" id="userCancelbtn">取消</button>
+				</div>
+			</div>
 
-            <ul class="userlistweb">
-               <li>
-	            	<input type="checkbox" name="username" value="用户一"/> 用户一
-				</li>
-				<li>
-	                <input type="checkbox" name="username"value="用户二"/> 用户二
-				</li>
-				<li>
-	                <input type="checkbox" name="username" value="用户三"/> 用户三
-				</li>
-				<li>
-	                <input type="checkbox" name="username" value="用户四"/> 用户四
-				</li>
-				<li>
-	                <input type="checkbox" name="username" value="用户五"/> 用户五
-				</li>
-				<li>
-	                <input type="checkbox" name="username" value="用户六"/> 用户六
-				</li>
-				<li>
-	                <input type="checkbox" name="username" value="用户七"/> 用户七
-				</li>
-				<li>
-	                <input type="checkbox" name="username" value="用户八"/> 用户八
-				</li>
-				<li>
-	                <input type="checkbox" name="username" value="用户九"/> 用户九
-				</li>
-            </ul>
-            <div class="userlistbtn">
-                <button type="button" id="userSubmitbtn" onclick="selectUser(this)">提交</button>
-                <button type="button" id="userCancelbtn">取消</button>
-            </div>
-        </div>
+		</div>
 
-    </div>
-    
-    
-    <script src="js/jquery/jQuery-2.2.0.min.js"></script>
-    <script src="js/bootstrap/js/bootstrap.min.js"></script>
-    <!-- Data Tables -->
-    <script src="js/dataTables/jquery.jeditable.js"></script>
-    <script src="js/dataTables/jquery.dataTables.js"></script>
-    <script src="js/dataTables/dataTables.bootstrap.js"></script>
-    <script src="js/layer/laydate/laydate.js"></script>
-    <script>
-        $(document).ready(function () {
-          $('.dataTables-example').dataTable();
-          var oTable = $('#editable').dataTable();
-          
-          //表格底部信息位置
-          $("#editable_wrapper .row").eq(1).after($("#editable_wrapper .row").eq(0));
-          $("#editable_filter").hide();
-          $("#editable_info").hide();
-          $("#editable_length").css({"margin-top":"-40px"});
-          
-          //模态框
-          var height = $(document).height();
-          $(".modal").css({"height":height});
-          
-          //点击修改触发事件
-          $("#reviseInfoBtn").click(function(){
-            var chkBoxes = $('#editable').find('input:checked');
-            if (chkBoxes.length == 0) {         //如果不勾选弹出警告框
-              alert('请选择一个信息');
-              return false;
-            }
-            var dataId;
-            $(chkBoxes).each(function () {
-                dataId = $(this).attr('data-id');
-            });
-			$("#modal").html("");
+		<script src="js/jquery/jQuery-2.2.0.min.js"></script>
+		<script src="js/bootstrap/js/bootstrap.min.js"></script>
+		<!-- Data Tables -->
+		<script src="js/dataTables/jquery.jeditable.js"></script>
+		<script src="js/dataTables/jquery.dataTables.js"></script>
+		<script src="js/dataTables/dataTables.bootstrap.js"></script>
+		<script src="js/layer/laydate/laydate.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('.dataTables-example').dataTable();
+				var oTable = $('#editable').dataTable();
 
-			$.getJSON("data/source.json",function(data){
-				var con = $(".modalbg");
-				con.html("");
-				$.each(data,function(index,obj){
-				  var tr = $('<tr class="gradeX">'+
-					  '<td class="center" name="id">'+obj.id+'</td><td class="center" name="SVID">'+obj.SVID+'</td><td class="center">'+obj.NET_NAME+'</td>'+
-					  '<td class="center">'+obj.NET_URL+'</td><td class="center">'+obj.BODY_FIXED_PHONE+'['+obj.BODY_PHONE+']</td> <td class="center">'+obj.BODY_EMAIL+'</td>'+
-					  '<td class="center">'+obj.REPORT_TYPE+'</td><td class="center"><input type="checkbox" data-id="'+obj.id+'"/></td>'
-					  +' </tr>');
-				  con.append(tr);
-				})
-			})
+				//表格底部信息位置
+				$("#editable_wrapper .row").eq(1).after($("#editable_wrapper .row").eq(0));
+				$("#editable_filter").hide();
+				$("#editable_info").hide();
+				$("#editable_length").css({
+					"margin-top": "-40px"
+				});
 
+				//模态框
+				var height = $(document).height();
+				$(".modal").css({
+					"height": height
+				});
 
+				//点击修改触发事件
+				$("#reviseInfoBtn").click(function() {
+					$("#modal").show();
+					$(".modalbg").show();
+				});
+				$("#cancelBtn").click(function() {
+					$("#modal").hide();
+				});
+				//点击选择
+				$("#loginSelect").click(function() {
+					$(".selectbox").show();
+				});
+				$("#selectboxCan").click(function() {
+					$(".selectbox").hide();
+				});
 
+				//选择网站名称点击事件
+				$("#selectWebBtn").click(function() {
+					$("#modal").show();
+					$("#websit").show();
+					$(".modalbg").hide();
+					$("#userList").hide();
+				});
+				$("#websitCancelbtn").click(function() {
+					$("#modal").hide();
+				});
 
-			$("#modal").show();
-			$(".modalbg").show();
-          });
-          $("#cancelBtn").click(function(){
-          	$("#modal").hide();
-          });
-          //点击选择
-          $("#loginSelect").click(function(){
-          	$(".selectbox").show();
-          });
-          $("#selectboxCan").click(function(){
-          	$(".selectbox").hide();
-          });
+				//选择用户点击事件
+				$("#selecUserBtn").click(function() {
+					$("#modal").show();
+					$("#websit").hide();
+					$(".modalbg").hide();
+					$("#userList").show();
+				});
+				$("#userCancelbtn").click(function() {
+					$("#modal").hide();
+				});
 
-            //选择网站名称点击事件
-            $("#selectWebBtn").click(function(){
-                $("#modal").show();
-                $("#websit").show();
-                $(".modalbg").hide();
-                $("#userList").hide();
-            });
-            $("#websitCancelbtn").click(function(){
-                $("#modal").hide();
-            });
+			});
 
-            //选择用户点击事件
-            $("#selecUserBtn").click(function(){
-                $("#modal").show();
-                $("#websit").hide();
-                $(".modalbg").hide();
-                $("#userList").show();
-            });
-            $("#userCancelbtn").click(function(){
-                $("#modal").hide();
-            });
+			//日期范围限制
+			var start = {
+				elem: '#start',
+				format: 'YYYY/MM/DD hh:mm:ss',
+				min: laydate.now(), //设定最小日期为当前日期
+				max: '2099-06-16 23:59:59', //最大日期
+				istime: true,
+				istoday: false,
+				choose: function(datas) {
+					end.min = datas; //开始日选好后，重置结束日的最小日期
+					end.start = datas //将结束日的初始值设定为开始日
+				}
+			};
+			var end = {
+				elem: '#end',
+				format: 'YYYY/MM/DD hh:mm:ss',
+				min: laydate.now(),
+				max: '2099-06-16 23:59:59',
+				istime: true,
+				istoday: false,
+				choose: function(datas) {
+					start.max = datas; //结束日选好后，重置开始日的最大日期
+				}
+			};
+			laydate(start);
+			laydate(end);
+		</script>
+	</body>
 
-        });
-        
-        //日期范围限制
-        var start = {
-            elem: '#start',
-            format: 'YYYY/MM/DD hh:mm:ss',
-            min: laydate.now(), //设定最小日期为当前日期
-            max: '2099-06-16 23:59:59', //最大日期
-            istime: true,
-            istoday: false,
-            choose: function (datas) {
-                end.min = datas; //开始日选好后，重置结束日的最小日期
-                end.start = datas //将结束日的初始值设定为开始日
-            }
-        };
-        var end = {
-            elem: '#end',
-            format: 'YYYY/MM/DD hh:mm:ss',
-            min: laydate.now(),
-            max: '2099-06-16 23:59:59',
-            istime: true,
-            istoday: false,
-            choose: function (datas) {
-                start.max = datas; //结束日选好后，重置开始日的最大日期
-            }
-        };
-        laydate(start);
-        laydate(end);
-    </script>
-</body>
 </html>
