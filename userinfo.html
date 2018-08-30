@@ -54,11 +54,15 @@
 						var tr = $('<tr class="gradeX">'+
 						'<td class="center" name="id">'+obj.id+'</td><td class="center" name="SVID">'+obj.SVID+'</td><td class="center">'+obj.NET_NAME+'</td>'+
 						'<td class="center">'+obj.NET_URL+'</td><td class="center">'+obj.CREATETIME+'</td> <td class="center">'+obj.DEAL_LASTR_TIME+'</td>'+
-						'<td class="center">'+obj.DESCRIPTION+'</td><td class="center"><input type="checkbox"/></td>'
+						'<td class="center">'+obj.DESCRIPTION+'</td><td class="center"><input type="checkbox" value='+obj.SVID+"@"+obj.REPORT_TYPE_NAME+'/></td>'
 						+' </tr>');
 						con.append(tr);
 					})
 				})
+			
+			
+			
+			
 			
 	
 </script>
@@ -123,7 +127,7 @@
 				</form>
     		</div>
     		<button type="button" class="infosearch"><i class="glyphicon glyphicon-search"></i>   查询</button>
-    		<button type="button" class="infoedit" id="infoReset"><i class="glyphicon glyphicon-edit"></i>信息重置</button>
+    		<button type="button" class="infoedit" id="infoReset"><i class="glyphicon glyphicon-edit"></i>信息处置</button>
     	</div>
     	
     	<div class="row" style="width: 95%;padding: 20px;">
@@ -139,7 +143,7 @@
                                     <th>举报信息URL</th>
                                     <th>信息推送时间</th>
                                     <th>信息最后处理时间</th>
-                                    <th>举报类型</th>
+                                    <th>举报信息描述</th>
                                     <th>选择</th>
                                 </tr>
                             </thead>
@@ -156,8 +160,8 @@
     	<div class="modalbg">
     		<div class="head">信息处置菜单</div>
     		<div class="modalinfo">
-    			<p>信息编号：<span>XNHSHIDKIEI</span></p>
-    			<p>信息类型：<span>涉黄信息</span></p>
+    			<p>信息编号：<span id="number1">XNHSHIDKIEI</span></p>
+    			<p>信息类型：<span id="categray01">涉黄信息</span></p>
     		</div>
     		<div class="chuzhi">
     			<p><span id="czsuccess">处置成功</span></p>
@@ -167,8 +171,9 @@
     			<div class="select">
     				<span>处置方式类型：</span>
     				<select>
-    					<option>处置方式类型</option>
-    					<option>处置方式类型</option>
+    					<option>加强监管</option>
+    					<option>信息删除</option>
+    					<option>其他</option>
     				</select>
     			</div>
     			<div class="text">
@@ -180,8 +185,9 @@
     			<div class="select">
     				<span>失败原因：</span>
     				<select>
-    					<option>处置方式类型</option>
-    					<option>处置方式类型</option>
+    					<option>信息不真实</option>
+    					<option>信息无法找到</option>
+    					<option>其他</option>
     				</select>
     			</div>
     			<div class="text">
@@ -217,6 +223,12 @@
           
           //点击信息重置触发事件
           $("#infoReset").click(function(){
+          	$("#number1").html("");
+          	$("#categray01").html("");
+          	//获得被标记内容
+          	var arr = $(".mainbody input:checked").val().replace("/","").split("@");
+          	$("#number1").html(arr[0]);
+          	$("#categray01").html(arr[1]);
           	$("#modal").show();
           });
           

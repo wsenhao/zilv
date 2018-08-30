@@ -1,504 +1,551 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>后台管理系统</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/defaul.css">
-    <script src="js/jquery/jQuery-2.2.0.min.js"></script>
-    <script src="js/bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/charts/echarts.min.js"></script>
-    <script>
-        $(function () {
-            userlist();
-            Canvas1();
-            Canvas2();
-        });
-      
-        function Canvas1(){
-        	// 基于准备好的dom，初始化echarts实例
-	        var myChart = echarts.init(document.getElementById('main1'));
-	        var weatherIcons = {
-			    'Sunny': './data/asset/img/weather/sunny_128.png',
-			    'Cloudy': './data/asset/img/weather/cloudy_128.png',
-			    'Showers': './data/asset/img/weather/showers_128.png'
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>后台管理系统</title>
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/defaul.css">
+		<script src="js/jquery/jQuery-2.2.0.min.js"></script>
+		<script src="js/bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/charts/echarts.min.js"></script>
+		<script>
+			//权限控制
+			function getParams(key) {
+				var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) {
+					return unescape(r[2]);
+				}
+				return null;
+			};
+			var role = getParams("role");
+
+			$(function() {
+				//
+				userlist();
+				//权限控制
+				if('user' == role) {
+					Canvas3();
+					Canvas4();
+				} else {
+					Canvas1();
+					Canvas2();
+				}
+			});
+
+			function Canvas1() {
+				// 基于准备好的dom，初始化echarts实例
+				var myChart = echarts.init(document.getElementById('main1'));
+				var weatherIcons = {
+					'Sunny': './data/asset/img/weather/sunny_128.png',
+					'Cloudy': './data/asset/img/weather/cloudy_128.png',
+					'Showers': './data/asset/img/weather/showers_128.png'
+				};
+
+				option = {
+					title: {
+						text: '举报信息比例图',
+						subtext: '虚构数据',
+						left: 'center'
+					},
+					tooltip: {
+						trigger: 'item',
+						formatter: "{a} <br/>{b} : {c} ({d}%)"
+					},
+					legend: {
+						// orient: 'vertical',
+						// top: 'middle',
+						bottom: 10,
+						left: 'center',
+						data: ['涉黄信息', '暴恐信息', '低俗信息', '宗教极端信息', '涉赌信息']
+					},
+					series: [{
+						type: 'pie',
+						radius: '65%',
+						center: ['50%', '50%'],
+						selectedMode: 'single',
+						data: [{
+								value: 1548,
+								name: '涉黄信息',
+							},
+							{
+								value: 535,
+								name: '暴恐信息'
+							},
+							{
+								value: 510,
+								name: '低俗信息'
+							},
+							{
+								value: 634,
+								name: '宗教极端信息'
+							},
+							{
+								value: 735,
+								name: '涉赌信息'
+							}
+						],
+						itemStyle: {
+							emphasis: {
+								shadowBlur: 10,
+								shadowOffsetX: 0,
+								shadowColor: 'rgba(0, 0, 0, 0.5)'
+							}
+						}
+					}],
+					color: ['#3E79ED', 'red', '#f09ca4', '#5bcb6a', '#fe996b']
+				};
+				// 使用刚指定的配置项和数据显示图表。
+				myChart.setOption(option);
 			};
 
-			option = {
-			    title: {
-			        text: '举报信息比例图',
-			        subtext: '虚构数据',
-			        left: 'center'
-			    },
-			    tooltip : {
-			        trigger: 'item',
-			        formatter: "{a} <br/>{b} : {c} ({d}%)"
-			    },
-			    legend: {
-			        // orient: 'vertical',
-			        // top: 'middle',
-			        bottom: 10,
-			        left: 'center',
-			        data: ['涉黄信息', '暴恐信息','低俗信息','宗教极端信息','涉赌信息']
-			    },
-			    series : [
-			        {
-			            type: 'pie',
-			            radius : '65%',
-			            center: ['50%', '50%'],
-			            selectedMode: 'single',
-			            data:[
-			                {
-			                    value:1548,
-			                    name: '涉黄信息',
-			                    label: {
-			                        normal: {
-			                            formatter: [
-			                                '{title|{b}}{abg|}',
-			                                '  {weatherHead|天气}{valueHead|天数}{rateHead|占比}',
-			                                '{hr|}',
-			                                '  {Sunny|}{value|202}{rate|55.3%}',
-			                                '  {Cloudy|}{value|142}{rate|38.9%}',
-			                                '  {Showers|}{value|21}{rate|5.8%}'
-			                            ].join('\n'),
-			                            backgroundColor: '#eee',
-			                            borderColor: '#777',
-			                            borderWidth: 1,
-			                            borderRadius: 4,
-			                            rich: {
-			                                title: {
-			                                    color: '#eee',
-			                                    align: 'center'
-			                                },
-			                                abg: {
-			                                    backgroundColor: '#333',
-			                                    width: '100%',
-			                                    align: 'right',
-			                                    height: 25,
-			                                    borderRadius: [4, 4, 0, 0]
-			                                },
-			                                Sunny: {
-			                                    height: 30,
-			                                    align: 'left',
-			                                    backgroundColor: {
-			                                        image: weatherIcons.Sunny
-			                                    }
-			                                },
-			                                Cloudy: {
-			                                    height: 30,
-			                                    align: 'left',
-			                                    backgroundColor: {
-			                                        image: weatherIcons.Cloudy
-			                                    }
-			                                },
-			                                Showers: {
-			                                    height: 30,
-			                                    align: 'left',
-			                                    backgroundColor: {
-			                                        image: weatherIcons.Showers
-			                                    }
-			                                },
-			                                weatherHead: {
-			                                    color: '#333',
-			                                    height: 24,
-			                                    align: 'left'
-			                                },
-			                                hr: {
-			                                    borderColor: '#777',
-			                                    width: '100%',
-			                                    borderWidth: 0.5,
-			                                    height: 0
-			                                },
-			                                value: {
-			                                    width: 20,
-			                                    padding: [0, 20, 0, 30],
-			                                    align: 'left'
-			                                },
-			                                valueHead: {
-			                                    color: '#333',
-			                                    width: 20,
-			                                    padding: [0, 20, 0, 30],
-			                                    align: 'center'
-			                                },
-			                                rate: {
-			                                    width: 40,
-			                                    align: 'right',
-			                                    padding: [0, 10, 0, 0]
-			                                },
-			                                rateHead: {
-			                                    color: '#333',
-			                                    width: 40,
-			                                    align: 'center',
-			                                    padding: [0, 10, 0, 0]
-			                                }
-			                            }
-			                        }
-			                    }
-			                },
-			                {value:535, name: '暴恐信息'},
-			                {value:510, name: '低俗信息'},
-			                {value:634, name: '宗教极端信息'},
-			                {value:735, name: '涉赌信息'}
-			            ],
-			            itemStyle: {
-			                emphasis: {
-			                    shadowBlur: 10,
-			                    shadowOffsetX: 0,
-			                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-			                }
-			            }
-			        }
-			    ],
-                color:['#3E79ED', 'red','#f09ca4','#5bcb6a','#fe996b']
-			};
-	        // 使用刚指定的配置项和数据显示图表。
-	        myChart.setOption(option);
-        };
-        
-        function Canvas2(){
-        	// 基于准备好的dom，初始化echarts实例
-	        var myChart = echarts.init(document.getElementById('main2'));
-		       option = {
-				    title: {
-				        text: '举报信息趋势图'
-				    },
-				    tooltip: {
-				        trigger: 'axis'
-				    },
-				    legend: {
-				        data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
-				    },
-				    grid: {
-				        left: '3%',
-				        right: '4%',
-				        bottom: '3%',
-				        containLabel: true
-				    },
-				    toolbox: {
-				        feature: {
-				            saveAsImage: {}
-				        }
-				    },
-				    xAxis: {
-				        type: 'category',
-				        boundaryGap: false,
-				        data: ['周一','周二','周三','周四','周五','周六','周日']
-				    },
-				    yAxis: {
-				        type: 'value'
-				    },
-				    series: [
-				        {
-				            name:'邮件营销',
-				            type:'line',
-				            stack: '总量',
-				            data:[120, 132, 101, 134, 90, 230, 210]
-				        },
-				        {
-				            name:'联盟广告',
-				            type:'line',
-				            stack: '总量',
-				            data:[220, 182, 191, 234, 290, 330, 310]
-				        },
-				        {
-				            name:'视频广告',
-				            type:'line',
-				            stack: '总量',
-				            data:[150, 232, 201, 154, 190, 330, 410]
-				        },
-				        {
-				            name:'直接访问',
-				            type:'line',
-				            stack: '总量',
-				            data:[320, 332, 301, 334, 390, 330, 320]
-				        },
-				        {
-				            name:'搜索引擎',
-				            type:'line',
-				            stack: '总量',
-				            data:[820, 932, 901, 934, 1290, 1330, 1320]
-				        }
-				    ]
+			function Canvas2() {
+				// 基于准备好的dom，初始化echarts实例
+				var myChart = echarts.init(document.getElementById('main2'));
+				option = {
+					title: {
+						text: '举报信息趋势图'
+					},
+					tooltip: {
+						trigger: 'axis'
+					},
+					legend: {
+						data: ['涉黄信息', '暴恐信息', '低俗信息', '宗教极端信息', '涉赌信息']
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					toolbox: {
+						feature: {
+							saveAsImage: {}
+						}
+					},
+					xAxis: {
+						type: 'category',
+						boundaryGap: false,
+						data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月']
+					},
+					yAxis: {
+						type: 'value'
+					},
+					series: [{
+							name: '涉黄信息',
+							type: 'line',
+							stack: '总量',
+							data: [120, 132, 101, 134, 90, 30, 110]
+						},
+						{
+							name: '暴恐信息',
+							type: 'line',
+							stack: '总量',
+							data: [220, 182, 191, 234, 190, 130, 110]
+						},
+						{
+							name: '低俗信息',
+							type: 'line',
+							stack: '总量',
+							data: [150, 232, 201, 154, 190, 330, 310]
+						},
+						{
+							name: '宗教极端信息',
+							type: 'line',
+							stack: '总量',
+							data: [320, 332, 301, 334, 190, 130, 120]
+						},
+						{
+							name: '涉赌信息',
+							type: 'line',
+							stack: '总量',
+							data: [820, 932, 901, 934, 190, 130, 120]
+						}
+					]
 				};
-	        // 使用刚指定的配置项和数据显示图表。
-	        myChart.setOption(option);
-        };
-        
-        
-        
-         //分类二级联动
-        
-        var aArray = new Array();
+				// 使用刚指定的配置项和数据显示图表。
+				myChart.setOption(option);
+			};
+
+			function Canvas3() {
+				// 基于准备好的dom，初始化echarts实例
+				var myChart = echarts.init(document.getElementById('main1'));
+				var weatherIcons = {
+					'Sunny': './data/asset/img/weather/sunny_128.png',
+					'Cloudy': './data/asset/img/weather/cloudy_128.png',
+					'Showers': './data/asset/img/weather/showers_128.png'
+				};
+
+				option = {
+					title: {
+						text: '举报信息比例图',
+						subtext: '虚构数据',
+						left: 'center'
+					},
+					tooltip: {
+						trigger: 'item',
+						formatter: "{a} <br/>{b} : {c} ({d}%)"
+					},
+					legend: {
+						// orient: 'vertical',
+						// top: 'middle',
+						bottom: 10,
+						left: 'center',
+						data: ['虚假信息', '网路诈骗', '低俗信息']
+					},
+					series: [{
+						type: 'pie',
+						radius: '65%',
+						center: ['50%', '50%'],
+						selectedMode: 'single',
+						data: [{
+								value: 1548,
+								name: '虚假信息',
+							},
+							{
+								value: 535,
+								name: '网路诈骗'
+							},
+							{
+								value: 510,
+								name: '低俗信息'
+							}
+
+						],
+						itemStyle: {
+							emphasis: {
+								shadowBlur: 10,
+								shadowOffsetX: 0,
+								shadowColor: 'rgba(0, 0, 0, 0.5)'
+							}
+						}
+					}],
+					color: ['#3E79ED', 'red', '#f09ca4']
+				};
+				// 使用刚指定的配置项和数据显示图表。
+				myChart.setOption(option);
+			};
+
+			function Canvas4() {
+				// 基于准备好的dom，初始化echarts实例
+				var myChart = echarts.init(document.getElementById('main2'));
+				option = {
+					title: {
+						text: '举报信息趋势图'
+					},
+					tooltip: {
+						trigger: 'axis'
+					},
+					legend: {
+						data: ['虚假信息', '网路诈骗', '低俗信息']
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					toolbox: {
+						feature: {
+							saveAsImage: {}
+						}
+					},
+					xAxis: {
+						type: 'category',
+						boundaryGap: false,
+						data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月']
+					},
+					yAxis: {
+						type: 'value'
+					},
+					series: [{
+							name: '虚假信息',
+							type: 'line',
+							stack: '总量',
+							data: [120, 132, 101, 134, 90, 30, 110]
+						},
+						{
+							name: '网路诈骗',
+							type: 'line',
+							stack: '总量',
+							data: [220, 182, 191, 234, 190, 130, 110]
+						},
+						{
+							name: '低俗信息',
+							type: 'line',
+							stack: '总量',
+							data: [150, 232, 201, 154, 190, 330, 310]
+						}
+					]
+				};
+				// 使用刚指定的配置项和数据显示图表。
+				myChart.setOption(option);
+			};
+
+			//分类二级联动
+			var aArray = new Array();
 			aArray[0] = "网络招嫖";
 			aArray[1] = "淫秽信息";
 			aArray[2] = "低俗信息";
-		
 
 			var bArray = new Array(4);
 			bArray[0] = "低价出售";
 			bArray[1] = "彩票预测";
 			bArray[2] = "虚假网站";
 			bArray[3] = "交易平台";
-			
+
 			var cArray = new Array();
-    		cArray[0] = "木马盗窃";
+			cArray[0] = "木马盗窃";
 			cArray[1] = "钓鱼网站";
 			cArray[2] = "其他盗窃";
-			
+
 			var arr = new Array();
 			arr[0] = aArray;
 			arr[1] = bArray;
 			arr[2] = cArray;
-			
-    		function categrey(obj){
-    			var cityArray = arr[obj.value];
+
+			function categrey(obj) {
+				var cityArray = arr[obj.value];
 				var citySelect = document.getElementsByName("two")[0];
 				citySelect.innerHTML = "<option value='0'>--请选择详细分类--</option>"
 				for(var i = 0; i < cityArray.length; i++) {
 					citySelect.innerHTML += "<option>--" + cityArray[i] + "--</option>"
 				}
-    		}
-    		
-    		
-    		//用户选着功能
-    		function selectUser(aim){
-    			var arr = $(".userlistweb input:checked");
-    			var content = $(".usernameList");
-    			$.each(arr, function(index) {
-    				var str = content.html();
-    				content.html(str+arr[index].value+",");
-    			});
-    			//隐藏列表框
-    			$("#modal").hide();
-    			$(".userlistweb input:checked").prop("checked","");
-    		}
-        
-        
-        
-        
-        
-        
-        
-    </script>
-</head>
-<body class="bg">
-    <div id="areascontent">
-    	<div class="rows" style="overflow: hidden;position: relative;">
-            <div style="float: left; width: 31%;">
-                <div style="height: 150px; background-color: #fff;">
-                    <div class="panel panel-default">
-                        <!--<div class="panel-heading"><i class="fa fa-send fa-lg" style="padding-right: 5px;"></i>企业文化</div>-->
-                        <div class="panel-body">
-                            <ul>
-                                <li>
-                                	<form class="form-inline jubaoform">
-									  <div class="form-group">
-									    <label for="">举报时间：</label>
-									    <input type="text" style="width:180px; height: 30px;" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" placeholder="起始时间" >
-									  </div>
-									  <div class="form-group">
-									  	<label>至</label>
-									    <input type="text" style="width:180px; height: 30px;" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" placeholder="结束时间">
-									  </div>
-									</form>
-                                </li>
-                                <li>
-                                	<span>账户名称：</span>
-                                	<span class="usernameList"></span>
-									<button type="button" class="btn05" id="selecUserBtn">选择账户</button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div style="float: left; width: 33%;">
-                <div style="height: 150px; background-color: #fff;">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <ul>
-                            	<li>
-                                	<form class="form-inline jieshou">
-									  <div class="form-group">
-									    <label for="">信息接收时间：</label>
-									    <input type="text"  id=""  style="width:180px; height: 30px;" placeholder="起始时间" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
-									  </div>
-									  <div class="form-group">
-									  	<label>至</label>
-									    <input type="text"  id=""  style="width:180px; height: 30px;" placeholder="结束时间" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
-									  </div>
-									</form>
-                                </li>
-                                <li>
-                                	
-                                	<form>
-                                		<span>信息状态：</span> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                                		<label class="radio-inline">
+			}
+
+			//用户选着功能
+			function selectUser(aim) {
+				var arr = $(".userlistweb input:checked");
+				var content = $(".usernameList");
+				$.each(arr, function(index) {
+					var str = content.html();
+					content.html(str + arr[index].value + ",");
+				});
+				//隐藏列表框
+				$("#modal").hide();
+				$(".userlistweb input:checked").prop("checked", "");
+			}
+		</script>
+	</head>
+
+	<body class="bg">
+		<div id="areascontent">
+			<div class="rows" style="overflow: hidden;position: relative;">
+				<div style="float: left; width: 31%;">
+					<div style="height: 150px; background-color: #fff;">
+						<div class="panel panel-default">
+							<!--<div class="panel-heading"><i class="fa fa-send fa-lg" style="padding-right: 5px;"></i>企业文化</div>-->
+							<div class="panel-body">
+								<ul>
+									<li>
+										<form class="form-inline jubaoform">
+											<div class="form-group">
+												<label for="">举报时间：</label>
+												<input type="text" style="width:180px; height: 30px;" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" placeholder="起始时间">
+											</div>
+											<div class="form-group">
+												<label>至</label>
+												<input type="text" style="width:180px; height: 30px;" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" placeholder="结束时间">
+											</div>
+										</form>
+									</li>
+									<li>
+										<span>账户名称：</span>
+										<span class="usernameList"></span>
+										<button type="button" class="btn05" id="selecUserBtn">选择账户</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="float: left; width: 33%;">
+					<div style="height: 150px; background-color: #fff;">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<ul>
+									<li>
+										<form class="form-inline jieshou">
+											<div class="form-group">
+												<label for="">信息接收时间：</label>
+												<input type="text" id="" style="width:180px; height: 30px;" placeholder="起始时间" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+											</div>
+											<div class="form-group">
+												<label>至</label>
+												<input type="text" id="" style="width:180px; height: 30px;" placeholder="结束时间" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+											</div>
+										</form>
+									</li>
+									<li>
+
+										<form>
+											<span>信息状态：</span> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+											<label class="radio-inline">
 										  <input type="radio" name="inlineRadioOptions" id="" value="option1"> 已处理
 										</label>
-										<label class="radio-inline">
+											<label class="radio-inline">
 										  <input type="radio" name="inlineRadioOptions" id="" value="option2"> 未处理
 										</label>
-										<label class="radio-inline">
+											<label class="radio-inline">
 										  <input type="radio" name="inlineRadioOptions" id="" value="option3"> 处理失败
 										</label>
-                                	</form>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div style="float: left; width: 36%;">
-                <div style="height: 150px;background-color: #fff;">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <ul>
-                            	<li>
-                                	<form class="form-inline chuzhi">
-									  <div class="form-group">
-									    <label for="">接收处置时间：</label>
-									    <input type="text" style="width:180px; height: 30px;" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" id="" placeholder="起始时间">
-									  </div>
-									  <div class="form-group">
-									  	<label>至</label>
-									    <input type="text" style="width:180px; height: 30px;" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" id="" placeholder="结束时间">
-									  </div>
-									</form>
-                                </li>
-                                <li>
-                                	<form class="form-inline">
-									  <div class="form-group">
-									    <label for="exampleInputName2">信息分类：</label>
-									     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-									    <select class="form-control"style="width:180px; height: 30px;" onchange="categrey(this)">
-									    	<option value="0">淫秽色情</option>
-									    	<option value="1">网络诈骗</option>
-									    	<option value="2">网络盗窃</option>
-									    </select>
-									  </div>
-									  &nbsp;&nbsp;&nbsp;
-									  <div class="form-group">
-									    <select class="form-control" style="width:180px; height: 30px;" id="two" name="two">
-									    	
-									    </select>
-									  </div>
-									</form>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button type="button" class="chaxun"><i class="glyphicon glyphicon-search"></i>   查询</button>
-        </div>
-       <!-- <div class="rows" style="margin-top: 30px;margin-bottom: 100px; overflow: hidden;">
+										</form>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="float: left; width: 36%;">
+					<div style="height: 150px;background-color: #fff;">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<ul>
+									<li>
+										<form class="form-inline chuzhi">
+											<div class="form-group">
+												<label for="">接收处置时间：</label>
+												<input type="text" style="width:180px; height: 30px;" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" id="" placeholder="起始时间">
+											</div>
+											<div class="form-group">
+												<label>至</label>
+												<input type="text" style="width:180px; height: 30px;" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" id="" placeholder="结束时间">
+											</div>
+										</form>
+									</li>
+									<li>
+										<form class="form-inline">
+											<div class="form-group">
+												<label for="exampleInputName2">信息分类：</label> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+												<select class="form-control" style="width:180px; height: 30px;" onchange="categrey(this)">
+													<option value="0">淫秽色情</option>
+													<option value="1">网络诈骗</option>
+													<option value="2">网络盗窃</option>
+												</select>
+											</div>
+											&nbsp;&nbsp;&nbsp;
+											<div class="form-group">
+												<select class="form-control" style="width:180px; height: 30px;" id="two" name="two">
+
+												</select>
+											</div>
+										</form>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="chaxun"><i class="glyphicon glyphicon-search"></i>   查询</button>
+			</div>
+			<!-- <div class="rows" style="margin-top: 30px;margin-bottom: 100px; overflow: hidden;">
             <div style="float: left; width: 49%;"  id="main12">
             </div>
             <div style="float: right; width: 49%;">
             </div>
         </div>-->
-        <div id="main" style="margin-top: 30px;margin-bottom: 100px; overflow: hidden;">
-        	  <div id="main1" style="width: 45%;height:500px; float: left; color: white;"></div>
-        	  <div id="main2" style="width: 45%;height:500px; float: right;"></div>
-        </div>
-       
-    </div>
-    </div>
-     <div class="modal" id="modal">
-    	<!--用户列表-->
-	    	<div id="userList">
-	    		<div class="head">用户列表</div>
-	    		<form class="form-inline">
-				  <div class="form-group">
-				    <label for="">用户名称关键字:</label>
-				    <input type="text" class="form-control" placeholder="">
-				    <button type="button" class="btn">查询</button>
-				  </div>
+			<div id="main" style="margin-top: 30px;margin-bottom: 100px; overflow: hidden;">
+				<div id="main1" style="width: 45%;height:500px; float: left; color: white;"></div>
+				<div id="main2" style="width: 45%;height:500px; float: right;"></div>
+			</div>
+
+		</div>
+		</div>
+		<div class="modal" id="modal">
+			<!--用户列表-->
+			<div id="userList">
+				<div class="head">用户列表</div>
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="">用户名称关键字:</label>
+						<input type="text" class="form-control" placeholder="">
+						<button type="button" class="btn">查询</button>
+					</div>
 				</form>
 				<ul class="userlistweb">
 					<li>
-                    	<input type="checkbox" name="username" value="用户一"/> 用户一
+						<input type="checkbox" name="username" value="用户一" /> 用户一
 					</li>
 					<li>
-	                    <input type="checkbox" name="username"value="用户二"/> 用户二
+						<input type="checkbox" name="username" value="用户二" /> 用户二
 					</li>
 					<li>
-	                    <input type="checkbox" name="username" value="用户三"/> 用户三
+						<input type="checkbox" name="username" value="用户三" /> 用户三
 					</li>
 					<li>
-	                    <input type="checkbox" name="username" value="用户四"/> 用户四
+						<input type="checkbox" name="username" value="用户四" /> 用户四
 					</li>
 					<li>
-	                    <input type="checkbox" name="username" value="用户五"/> 用户五
+						<input type="checkbox" name="username" value="用户五" /> 用户五
 					</li>
 					<li>
-	                    <input type="checkbox" name="username" value="用户六"/> 用户六
+						<input type="checkbox" name="username" value="用户六" /> 用户六
 					</li>
 					<li>
-	                    <input type="checkbox" name="username" value="用户七"/> 用户七
+						<input type="checkbox" name="username" value="用户七" /> 用户七
 					</li>
 					<li>
-	                    <input type="checkbox" name="username" value="用户八"/> 用户八
+						<input type="checkbox" name="username" value="用户八" /> 用户八
 					</li>
 					<li>
-	                    <input type="checkbox" name="username" value="用户九"/> 用户九
+						<input type="checkbox" name="username" value="用户九" /> 用户九
 					</li>
-					
+
 				</ul>
-	    		<div class="userlistbtn">
-	    			<button type="button" id="userSubmitbtn"onclick="selectUser(this)">提交</button>
-	    			<button type="button" id="userCancelbtn">取消</button>
-	    		</div>
-    	</div>
-     <script src="js/layer/laydate/laydate.js"></script>
-    <script>
-    	 //日期范围限制
-        var start = {
-            elem: '#start',
-            format: 'YYYY/MM/DD hh:mm:ss',
-            min: laydate.now(), //设定最小日期为当前日期
-            max: '2099-06-16 23:59:59', //最大日期
-            istime: true,
-            istoday: false,
-            choose: function (datas) {
-                end.min = datas; //开始日选好后，重置结束日的最小日期
-                end.start = datas //将结束日的初始值设定为开始日
-            }
-        };
-        var end = {
-            elem: '#end',
-            format: 'YYYY/MM/DD hh:mm:ss',
-            min: laydate.now(),
-            max: '2099-06-16 23:59:59',
-            istime: true,
-            istoday: false,
-            choose: function (datas) {
-                start.max = datas; //结束日选好后，重置开始日的最大日期
-            }
-        };
-        laydate(start);
-        laydate(end);
-    	
-    	function userlist(){
-    		$("#selecUserBtn").click(function(){
-          	$("#modal").show();
-          	$("#userList").show();
-          	$("#websit").hide();
-          	$("#auditFailedBg").hide();
-          	$(".modalbg").hide();
-          });
-          
-          $("#userCancelbtn").click(function(){
-          	$("#modal").hide();
-          });
-    	}
-    	
-    </script>
-    
-</body>
+				<div class="userlistbtn">
+					<button type="button" id="userSubmitbtn" onclick="selectUser(this)">提交</button>
+					<button type="button" id="userCancelbtn">取消</button>
+				</div>
+			</div>
+			<script src="js/layer/laydate/laydate.js"></script>
+			<script>
+				//日期范围限制
+				var start = {
+					elem: '#start',
+					format: 'YYYY/MM/DD hh:mm:ss',
+					min: laydate.now(), //设定最小日期为当前日期
+					max: '2099-06-16 23:59:59', //最大日期
+					istime: true,
+					istoday: false,
+					choose: function(datas) {
+						end.min = datas; //开始日选好后，重置结束日的最小日期
+						end.start = datas //将结束日的初始值设定为开始日
+					}
+				};
+				var end = {
+					elem: '#end',
+					format: 'YYYY/MM/DD hh:mm:ss',
+					min: laydate.now(),
+					max: '2099-06-16 23:59:59',
+					istime: true,
+					istoday: false,
+					choose: function(datas) {
+						start.max = datas; //结束日选好后，重置开始日的最大日期
+					}
+				};
+				laydate(start);
+				laydate(end);
+
+				function userlist() {
+					$("#selecUserBtn").click(function() {
+						$("#modal").show();
+						$("#userList").show();
+						$("#websit").hide();
+						$("#auditFailedBg").hide();
+						$(".modalbg").hide();
+					});
+
+					$("#userCancelbtn").click(function() {
+						$("#modal").hide();
+					});
+				}
+			</script>
+
+	</body>
+
 </html>
