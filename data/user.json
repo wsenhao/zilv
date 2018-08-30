@@ -13,13 +13,14 @@
     "USER_ID": "0001",
     "BODY_NAME": "北京XXX网络科技公司",
     "BOYD_URL": "www.xxxxx.com",
-    "BODY_FIXED_PHONE": "035X-87XX",
+    "BODY_FIXED_PHONE": "012X-87XX",
     "BODY_PHONE": "158XXXX3526",
     "BODY_EMAIL": "www.XXX_98@XX.com",
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-    "DEAL_LASTR_TIME":"2012/5/5 4:07:16"
+    "DEAL_LASTR_TIME":"2012/5/5 4:07:16",
+    "REPORT_TYPE_NAME":"虚假网站"
   },
   {
     "id": "2",
@@ -35,13 +36,14 @@
     "USER_ID": "0001",
     "BODY_NAME": "北京XXX科技公司",
     "BOYD_URL": "www.xxxxx.com",
-    "BODY_FIXED_PHONE": "035X-87XX",
+    "BODY_FIXED_PHONE": "032X-87XX",
     "BODY_PHONE": "158XXXX3526",
     "BODY_EMAIL": "www.XXX_98@XX.com",
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-    "DEAL_LASTR_TIME":"2012/4/15 4:07:16"
+    "DEAL_LASTR_TIME":"2012/4/15 4:07:16",
+    "REPORT_TYPE_NAME":"虚假网站"
   },
   {
     "id": "3",
@@ -57,13 +59,14 @@
     "USER_ID": "0001",
     "BODY_NAME": "北京XXX网络科技公司",
     "BOYD_URL": "www.xxxxx.com",
-    "BODY_FIXED_PHONE": "035X-87XX",
+    "BODY_FIXED_PHONE": "043X-87XX",
     "BODY_PHONE": "158XXXX3526",
     "BODY_EMAIL": "www.XXX_98@XX.com",
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-    "DEAL_LASTR_TIME":"2012/4/15 3:07:06"
+    "DEAL_LASTR_TIME":"2012/4/15 3:07:06",
+    "REPORT_TYPE_NAME":"虚假网站"
   },
   {
     "id": "5",
@@ -79,13 +82,14 @@
     "USER_ID": "0001",
     "BODY_NAME": "北京XXX网络科技公司",
     "BOYD_URL": "www.xxxxx.com",
-    "BODY_FIXED_PHONE": "035X-87XX",
+    "BODY_FIXED_PHONE": "023X-87XX",
     "BODY_PHONE": "158XXXX3526",
     "BODY_EMAIL": "www.XXX_98@XX.com",
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-    "DEAL_LASTR_TIME":"2012/6/15 3:07:06"
+    "DEAL_LASTR_TIME":"2012/6/15 3:07:06",
+    "REPORT_TYPE_NAME":"虚假网站"
   },
   {
     "id": "5",
@@ -101,13 +105,14 @@
     "USER_ID": "0001",
     "BODY_NAME": "北京XXX资源公司",
     "BOYD_URL": "www.xxxxx.com",
-    "BODY_FIXED_PHONE": "035X-87XX",
+    "BODY_FIXED_PHONE": "015X-87XX",
     "BODY_PHONE": "158XXXX3526",
     "BODY_EMAIL": "www.XXX_98@XX.com",
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-    "DEAL_LASTR_TIME":"2012/7/15 3:07:06"
+    "DEAL_LASTR_TIME":"2012/7/15 3:07:06",
+    "REPORT_TYPE_NAME":"虚假网站"
   },
   {
     "id": "6",
@@ -123,13 +128,14 @@
     "USER_ID": "0001",
     "BODY_NAME": "北京XXX直播科技公司",
     "BOYD_URL": "www.xxxxx.com",
-    "BODY_FIXED_PHONE": "035X-87XX",
+    "BODY_FIXED_PHONE": "043X-87XX",
     "BODY_PHONE": "158XXXX3526",
     "BODY_EMAIL": "www.XXX_98@XX.com",
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-    "DEAL_LASTR_TIME":"2012/6/18 3:07:06"
+    "DEAL_LASTR_TIME":"2012/6/18 3:07:06",
+    "REPORT_TYPE_NAME":"虚假网站"
   },
   {
     "id": "7",
@@ -145,13 +151,14 @@
     "USER_ID": "0001",
     "BODY_NAME": "上海XXX网络科技公司",
     "BOYD_URL": "www.xxxxx.com",
-    "BODY_FIXED_PHONE": "035X-87XX",
+    "BODY_FIXED_PHONE": "095X-87XX",
     "BODY_PHONE": "158XXXX3526",
     "BODY_EMAIL": "www.XXX_98@XX.com",
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-    "DEAL_LASTR_TIME":"2012/5/18 3:07:06"
+    "DEAL_LASTR_TIME":"2012/5/18 3:07:06",
+    "REPORT_TYPE_NAME":"虚假网站"
   },
   {
     "id": "8",
@@ -167,13 +174,15 @@
     "USER_ID": "0001",
     "BODY_NAME": "北京XXX网络科技公司",
     "BOYD_URL": "www.xxxxx.com",
-    "BODY_FIXED_PHONE": "035X-87XX",
+    "BODY_FIXED_PHONE": "0232-87XX",
     "BODY_PHONE": "158XXXX3526",
     "BODY_EMAIL": "www.XXX_98@XX.com",
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-    "DEAL_LASTR_TIME":"2012/5/19 3:07:06"
+    "DEAL_LASTR_TIME":"2012/5/19 3:07:06",
+    "REPORT_TYPE_NAME":"虚假网站"
+    
   },
   {
     "id": "9",
@@ -189,13 +198,14 @@
     "USER_ID": "0001",
     "BODY_NAME": "深圳XXX网络科技公司",
     "BOYD_URL": "www.xxxxx.com",
-    "BODY_FIXED_PHONE": "035X-87XX",
+    "BODY_FIXED_PHONE": "039X-87XX",
     "BODY_PHONE": "158XXXX3526",
     "BODY_EMAIL": "www.XXX_98@XX.com",
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-     "DEAL_LASTR_TIME":"2012/4/21 3:07:06"
+     "DEAL_LASTR_TIME":"2012/4/21 3:07:06",
+     "REPORT_TYPE_NAME":"虚假网站"
   },
   {
     "id": "10",
@@ -211,13 +221,14 @@
     "USER_ID": "0001",
     "BODY_NAME": "河北XXX网络科技公司",
     "BOYD_URL": "www.xxxxx.com",
-    "BODY_FIXED_PHONE": "035X-87XX",
+    "BODY_FIXED_PHONE": "039X-87XX",
     "BODY_PHONE": "158XXXX3526",
     "BODY_EMAIL": "www.XXX_98@XX.com",
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-     "DEAL_LASTR_TIME":"2012/3/15 3:07:06"
+     "DEAL_LASTR_TIME":"2012/3/15 3:07:06",
+     "REPORT_TYPE_NAME":"虚假网站"
   },
   {
     "id": "11",
@@ -239,7 +250,8 @@
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-     "DEAL_LASTR_TIME":"2012/5/18 3:07:06"
+     "DEAL_LASTR_TIME":"2012/5/18 3:07:06",
+     "REPORT_TYPE_NAME":"虚假网站"
   },
   {
     "id": "12",
@@ -261,7 +273,8 @@
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-     "DEAL_LASTR_TIME":"2012/5/18 3:07:06"
+     "DEAL_LASTR_TIME":"2012/5/18 3:07:06",
+     "REPORT_TYPE_NAME":"虚假网站"
   },
   {
     "id": "13",
@@ -283,7 +296,8 @@
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-     "DEAL_LASTR_TIME":"2012/5/18 3:07:06"
+     "DEAL_LASTR_TIME":"2012/5/18 3:07:06",
+     "REPORT_TYPE_NAME":"虚假网站"
   },
   {
     "id": "14",
@@ -305,6 +319,7 @@
     "INFO_IS": "1",
     "BODY_ID": "1",
     "MESSAGE": "认真处置",
-     "DEAL_LASTR_TIME":"2012/5/18 3:07:06"
+     "DEAL_LASTR_TIME":"2012/5/18 3:07:06",
+     "REPORT_TYPE_NAME":"虚假网站"
   }
   ]
