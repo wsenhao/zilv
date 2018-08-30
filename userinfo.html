@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/dataTables/dataTables.bootstrap.css">
     
 </head>
+<script src="js/jquery/jQuery-2.2.0.min.js"></script>
 <script>
 	//分类二级联动
         
@@ -42,6 +43,23 @@
 					citySelect.innerHTML += "<option>--" + cityArray[i] + "--</option>"
 				}
     		}
+    		
+    		
+    			
+			//显示表格内容
+			  $.getJSON("data/user.json",function(data){
+					var con = $(".mainbody");
+					con.html("");
+					$.each(data,function(index,obj){
+						var tr = $('<tr class="gradeX">'+
+						'<td class="center" name="id">'+obj.id+'</td><td class="center" name="SVID">'+obj.SVID+'</td><td class="center">'+obj.NET_NAME+'</td>'+
+						'<td class="center">'+obj.NET_URL+'</td><td class="center">'+obj.CREATETIME+'</td> <td class="center">'+obj.DEAL_LASTR_TIME+'</td>'+
+						'<td class="center">'+obj.DESCRIPTION+'</td><td class="center"><input type="checkbox"/></td>'
+						+' </tr>');
+						con.append(tr);
+					})
+				})
+			
 	
 </script>
 <body class="body">
@@ -117,256 +135,15 @@
                                 <tr>
                                     <th>信息ID</th>
                                     <th>信息编号</th>
-                                    <th>举报网站名称</th>
-                                    <th>举报网站信息URL</th>
-                                    <th>信息推动时间</th>
+                                    <th>主体名称</th>
+                                    <th>举报信息URL</th>
+                                    <th>信息推送时间</th>
                                     <th>信息最后处理时间</th>
                                     <th>举报类型</th>
                                     <th>选择</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                                 <tr class="gradeX">
-                                	<td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td class="center">0</td>
-                                    <td class="center">Win 95+</td>
-                                    <td class="center">-</td>
-                                    <td class="center"><input type="checkbox"/></td>
-                                </tr>
-                            
+                            <tbody class="mainbody">
                             </tbody>
                         </table>
                     </div>
