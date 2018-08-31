@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
 
-<<<<<<< HEAD
 	<head>
 		<meta charset="utf-8">
 		<title>自律平台综合管理系统</title>
@@ -101,6 +100,106 @@
 								</li>
 							</ul>
 						</li>
+						<li class="treeview">
+							<a href="#" class="user_invisited_no">
+								<span><font size="4">信息审核平台</font></span>
+								<i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a class="menuItem" data-id="" href="ecah.html" class="user_invisited">
+										<font size="3">信息审核流程</font>
+									</a>
+								</li>
+								<li>
+									<a class="menuItem" data-id="" href="ecah.html" class="user_invisited">
+										<font size="3">信息管理流程</font>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="treeview">
+							<a href="#" class="user_invisited_no">
+								<span><font size="4">用户管理平台</font></span>
+								<i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a class="menuItem" data-id="" href="ecah.html" class="user_invisited">
+										<font size="3">用户管理流程</font>
+									</a>
+								</li>
+								<li>
+									<a class="menuItem" data-id="" href="ecah.html" class="user_invisited">
+										<font size="3">角色管理流程</font>
+									</a>
+								</li>
+								<li>
+									<a class="menuItem" data-id="" href="ecah.html" class="user_invisited">
+										<font size="3">菜单管理流程</font>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="treeview">
+							<a href="#" class="user_invisited_no">
+								<span><font size="4">基础信息平台</font></span>
+								<i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a class="menuItem" data-id="" href="ecah.html" class="user_invisited">
+										<font size="3">数据字典管理</font>
+									</a>
+								</li>
+								<li>
+									<a class="menuItem" data-id="" href="ecah.html" class="user_invisited">
+										<font size="3">信息名单管理</font>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="treeview">
+							<a href="#" class="user_invisited_no">
+								<span><font size="4">第三方信息管理平台</font></span>
+								<i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a class="menuItem" data-id="" href="ecah.html" class="user_invisited">
+										<font size="3">第三方账户管理</font>
+									</a>
+								</li>
+								<li>
+									<a class="menuItem" data-id="" href="ecah.html" class="user_invisited">
+										<font size="3">第三方安全管理</font>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="treeview">
+							<a href="#" class="user_invisited_no">
+								<span><font size="4">门户网站管理平台</font></span>
+								<i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a class="menuItem" data-id="" href="ecah.html" class="user_invisited">
+										<font size="3">板块管理流程</font>
+									</a>
+								</li>
+								<li>
+									<a class="menuItem" data-id="" href="ecah.html" class="user_invisited">
+										<font size="3">信息发布流程</font>
+									</a>
+								</li>
+								<li>
+									<a class="menuItem" data-id="" href="ecah.html" class="user_invisited">
+										<font size="3">举报信息管理流程</font>
+									</a>
+								</li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -149,26 +248,33 @@
                 return null;
             };
             var role = getParams("role");
-            if (role == "manager"){
-                $("#accountName").text("manager");
-                $(".role_invisited").hide();
+            
+            if (role == "admin"){
+                $("#accountName").text("admin");
+                $("#chart01").prop("src", "default.html?role=admin");
+				$("#chart02").prop("href", "default.html?role=admin");
                 return;
             }
-
-				if(role == "manager") {
-					$("#accountName").text("manager");
-					$("#chart01").prop("src", "default.html?role=manager");
-					$("#chart02").prop("href", "default.html?role=manager");
-					$(".role_invisited").hide();
-					return;
-				}
-				if(role == "user") {
-					$("#accountName").text("user");
-					$("#chart01").prop("src", "default.html?role=user");
-					$("#chart02").prop("href", "default.html?role=user");
-					$(".user_invisited").hide();
-					return;
-				}
+            
+			if(role == "manager") {
+				$("#accountName").text("manager");
+				$("#chart01").prop("src", "default.html?role=manager");
+				$("#chart02").prop("href", "default.html?role=manager");
+				$(".role_invisited").hide();
+				$(".user_invisited_no").hide();
+				return;
+			}
+			if(role == "user") {
+				$("#accountName").text("user");
+				$("#chart01").prop("src", "default.html?role=user");
+				$("#chart02").prop("href", "default.html?role=user");
+				$(".user_invisited").hide();
+				$(".user_invisited_no").hide();
+				return;
+			}
+			
+			
+			
 			});
 		</script>
 	</body>

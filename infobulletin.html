@@ -39,7 +39,7 @@
     		function categrey(obj){
     			var cityArray = arr[obj.value];
 				var citySelect = document.getElementsByName("two")[0];
-				citySelect.innerHTML = "<option value='0'>--请选择详细分类--</option>"
+				citySelect.innerHTML = "<option value='0'>-选择详细分类-</option>"
 				for(var i = 0; i < cityArray.length; i++) {
 					citySelect.innerHTML += "<option>--" + cityArray[i] + "--</option>"
 				}
@@ -84,7 +84,7 @@
 						var tr = $('<tr class="gradeX">'+
 						'<td class="center" name="id">'+obj.id+'</td><td class="center" name="SVID">'+obj.SVID+'</td><td class="center">'+obj.NET_NAME+'</td>'+
 						'<td class="center">'+obj.NET_URL+'</td><td class="center">'+obj.BODY_FIXED_PHONE+'['+obj.BODY_PHONE+']</td> <td class="center">'+obj.BODY_EMAIL+'</td>'+
-						'<td class="center">'+obj.REPORT_TYPE+'</td><td class="center"><input type="checkbox" data-id="'+obj.id+'"/></td>'
+						'<td class="center">'+obj.REPORT_TYPE+'</td><td class="center"><input type="checkbox" data-id="'+obj.id+'" value = "'+obj.id+'"/></td>'
 						+' </tr>');
 						con.append(tr);
 					})
@@ -97,12 +97,12 @@
     		<div class="boxone">
     			<form class="form-inline">
 				  <div class="form-group">
-				    <label for="">信息ID：</label>
-				    <input type="text" class="form-control" value="你好">
+				    <label for="">信&nbsp;&nbsp;&nbsp;息&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;D&nbsp;：&nbsp;</label>
+				    <input type="text" class="form-control" value="你好" style="font-size: 14px; width: 200px;">
 				  </div>
 				  <br/><br/>
 				   <div class="form-group">
-				    <label for="">信息处置时间:</label>
+				    <label for="">信息处置时间：</label>
 				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
 				  </div>
 				  <div class="form-group">
@@ -112,15 +112,15 @@
 				  
 				  <br/><br/>
 				 <div class="form-group">
-				    <span>网站名称：</span>
+				    <span>网&nbsp;&nbsp;&nbsp;站&nbsp;&nbsp;名&nbsp;称&nbsp;：</span>
                     <span class="webList"></span>
-                    <button type="button" class="btn"  id="selectWebBtn">选择网站</button>
+                    <button type="button" class="btn"  id="selectWebBtn" style="width: 90px;">选择网站</button>
 				  </div>
 				  <br/><br/>
 				   <div class="form-group">
-				    <span>账户名称：</span>
+				    <span>账&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;名&nbsp;称&nbsp;：</span>
                     <span class="usernameList"></span>
-                    <button type="button" class="btn" id="selecUserBtn">选择用户</button>
+                    <button type="button" class="btn" id="selecUserBtn" style="width: 90px;">选择用户</button>
 				  </div>
 				</form>
     		</div>
@@ -128,7 +128,7 @@
     			<form class="form-inline">
 				  <div class="form-group">
 				    <label for="">信息编号:</label>
-				    <input type="text" class="form-control">
+				    <input type="text" class="form-control" style="font-size: 13px; width: 200px;">
 				  </div>
 				  <br/><br/>
 				  <div class="form-group">
@@ -142,7 +142,7 @@
 				  <br/><br/>
 				<div class="form-group">
 				    <label for="">信息状态:</label>
-				    <select class="form-control" class="infoState"style="height: 30px; width: 120px;">
+				    <select class="form-control" class="infoState"style="height: 30px; width: 200px; ">
 				    	<option value="1">待沟通</option>
 				    	<option value="1">已沟通</option>
 				    	<option value="1">沟通异常</option>
@@ -150,8 +150,8 @@
 				  </div>
                   <br/><br/>
                   <div class="form-group">
-                    <label for="">信息批次</label>
-                    <select class="form-control" class="infoState" style="height: 30px; width: 120px;">
+                    <label for="">信息批次:</label>
+                    <select class="form-control" class="infoState" style="height: 30px; width: 200px;">
                     	<option value="1">1</option>
 				    	<option value="2">2</option>
 				    	<option value="3">3</option>
@@ -165,12 +165,12 @@
     		<div class="boxthr">
     			<form class="form-inline">
 				  <div class="form-group">
-				    <label for="">举报信息URL:</label>
-				    <input type="text" class="form-control">
+				    <label for="">举报信息URL：</label>
+				    <input type="text" class="form-control" style="font-size: 13px; width: 200px; height: 30px;">
 				  </div>
 				  <br/><br/>
 				  <div class="form-group">
-				    <label for="">信息接收时间:</label>
+				    <label for="">信息接收时间：</label>
 				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
 				  </div>
 				  <div class="form-group">
@@ -179,16 +179,16 @@
 				  </div>
 				  <br/><br/>
 				  <div class="form-group">
-				    <label for="">信息分类:</label>
-				     <select class="form-control" onchange="categrey(this)" style="width: 120px;height: 30px;">
+				    <label for="">信&nbsp;&nbsp;息&nbsp;&nbsp;分&nbsp;&nbsp;类&nbsp;：</label>
+				     <select class="form-control" onchange="categrey(this)" style="width: 100px;height: 30px; font-size: 12px;">
+				     	<option value="-1">选着分类</option>
 				    	<option value="0">淫秽色情</option>
 						<option value="1">网络诈骗</option>
 						<option value="2">网络盗窃</option>
 				    </select>
 				  </div>
 				  <div class="form-group">
-				    <label for="">至</label>
-				    <select class="form-control" id="two" name="two" style="width: 160px;height: 30px;">
+				    <select class="form-control" id="two" name="two" style="width: 123px;height: 30px; font-size: 12px;">
 
 				    </select>
 				  </div>
@@ -197,8 +197,8 @@
     		<div class="infobtn">
     			<button type="button" class="buttonBlue"><i class="glyphicon glyphicon-search"></i>  查询</button>
     			<button type="button" class="buttonOrange" id="reviseInfoBtn"><i class="glyphicon glyphicon-edit"></i>  修改</button>
-    			<button type="button" class="buttonRed"><i class="glyphicon glyphicon-remove-sign"></i>  联系失败</button>
-    			<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-list-alt"></i>  已沟通</button>
+    			<button type="button" class="buttonRed" id="buttonRed1"><i class="glyphicon glyphicon-remove-sign"></i>  联系失败</button>
+    			<button type="button" class="buttonGreen" id="buttonGreen1"><i class="glyphicon glyphicon-list-alt"></i>  已沟通</button>
     			<button type="button" class="buttonBlue" id="passEmailBtn"><i class="glyphicon glyphicon-envelope"></i>  发送邮件</button>
     			<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-open"></i>  导出Excel</button>
     		</div>
@@ -439,6 +439,35 @@
                 <button type="button" id="userCancelbtn">取消</button>
             </div>
         </div>
+        
+        <!--联系成功 -->
+        <div id="relationOn">
+            <div class="head">信息标记</div>
+            <p class="font" id="relationCon"></p>
+            <div>
+                <button type="button" id="relationSubmitbtn1">是</button>
+                <button type="button" id="relationCancelbtn1">否</button>
+            </div>
+        </div>
+
+
+
+    	<!--联系失败-->
+    	<div id="relationNo">
+    		<div class="head">详细情况描述</div>
+    		&nbsp;&nbsp;&nbsp;<span>联系异常原因:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    		<select id="selelct_option">
+    			<option value="0">联系方式虚假</option>
+    			<option value="1">无人接听</option>
+    			<option value="2">其他</option>
+    		</select>
+    		<textarea rows="4"></textarea>
+    		<div>
+    			<button type="button" id="relationSubmitbtn2">提交</button>
+    			<button type="button" id="relationCancelbtn2">取消</button>
+    		</div>
+    	</div>
+        
 
     </div>
 
@@ -584,28 +613,110 @@
           	$(".selectbox").hide();
           });
 
-            //选择网站名称点击事件
-            $("#selectWebBtn").click(function(){
-                $("#modal").show();
-                $("#websit").show();
-                $(".modalbg").hide();
-                $("#userList").hide();
-            });
-            $("#websitCancelbtn").click(function(){
-                $("#modal").hide();
-            });
+        //选择网站名称点击事件
+        $("#selectWebBtn").click(function(){
+            $("#modal").show();
+            $("#websit").show();
+            $(".modalbg").hide();
+            $("#userList").hide();
+            $("#relationNo").hide();
+         	$("#relationOn").hide();
+        });
+        $("#websitCancelbtn").click(function(){
+            $("#modal").hide();
+        });
 
-            //选择用户点击事件
-            $("#selecUserBtn").click(function(){
-                $("#modal").show();
-                $("#websit").hide();
-                $(".modalbg").hide();
-                $("#userList").show();
-            });
-            $("#userCancelbtn").click(function(){
-                $("#modal").hide();
-            });
-
+        //选择用户点击事件
+        $("#selecUserBtn").click(function(){
+            $("#modal").show();
+            $("#websit").hide();
+            $(".modalbg").hide();
+            $("#userList").show();
+             $("#relationNo").hide();
+         	$("#relationOn").hide();
+        });
+        $("#userCancelbtn").click(function(){
+            $("#modal").hide();
+        });
+            
+            
+         
+           	  //标记已联系框
+          $("#buttonGreen1").click(function(){
+          	 //获得以选中的信息
+             var arra = $(".mainbody input:checked");
+             var str = "[";
+             
+             if(arra.length < 1){
+             	alert("至少选着一条信息！！");
+             	return;
+             }
+             $("#modal").show();
+             $(".modalbg").hide();
+             $("#websit").hide();
+             $("#userList").hide();
+             $("#relationNo").hide();
+             $("#relationOn").show();
+             
+            
+             $.each(arra,function(index,obj){
+             	if(index == arra.length -1 ){
+             		str = str + obj.value+"]";
+             	}else{
+             		str = str + obj.value+",";
+             	}
+             })
+             $("#relationCon").html("是否对信息"+str+"审核通过？");
+          });
+          
+          $("#relationSubmitbtn1").click(function(){
+          		$("#modal").hide();
+            	$("#relationOn").hide();
+            	$("#relationCon").html("");
+          })
+          
+          $("#relationCancelbtn1").click(function(){
+          		$("#modal").hide();
+            	$("#relationOn").hide();
+            	$("#relationCon").html("");
+          })
+          
+          
+          
+          
+          
+          //标记联系异常信息
+          $("#buttonRed1").click(function(){
+          	 //获得以选中的信息
+             var arra = $(".mainbody input:checked");
+             var str = "[";
+             
+             if(arra.length < 1){
+             	alert("至少选着一条信息！！");
+             	return;
+             }
+             $("#modal").show();
+             $(".modalbg").hide();
+             $("#websit").hide();
+             $("#userList").hide();
+             $("#relationNo").show();
+             $("#relationOn").hide();
+          });
+           	
+          $("#relationSubmitbtn2").click(function(){
+          		$("#modal").hide();
+            	$("#relationOn").hide();
+          })
+          
+          $("#relationCancelbtn2").click(function(){
+          		$("#modal").hide();
+            	$("#relationOn").hide();
+          })
+          
+          
+          
+          
+          
         });
 
         //日期范围限制
@@ -634,6 +745,10 @@
         };
         laydate(start);
         laydate(end);
+        
+        
+        
+        
     </script>
 </body>
 </html>
