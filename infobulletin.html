@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/dataTables/dataTables.bootstrap.css">
 
 </head>
+
 <script src="js/jquery/jQuery-2.2.0.min.js"></script>
 <script>
 	//分类二级联动
@@ -100,13 +101,7 @@
 				    <input type="text" class="form-control" value="你好">
 				  </div>
 				  <br/><br/>
-				  <div class="form-group">
-				    <span>网站名称：</span>
-                    <span class="webList"></span>
-                    <button type="button" class="btn"  id="selectWebBtn">选择网站</button>
-				  </div>
-				  <br/><br/>
-				  <div class="form-group">
+				   <div class="form-group">
 				    <label for="">信息处置时间:</label>
 				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
 				  </div>
@@ -114,14 +109,18 @@
 				    <label for="">至</label>
 				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
 				  </div>
+				  
 				  <br/><br/>
-				  <div class="form-group">
-				    <label for="">信息状态:</label>
-				    <select class="form-control" class="infoState"style="height: 30px; width: 120px;">
-				    	<option value="1">待沟通</option>
-				    	<option value="1">已沟通</option>
-				    	<option value="1">沟通异常</option>
-				    </select>
+				 <div class="form-group">
+				    <span>网站名称：</span>
+                    <span class="webList"></span>
+                    <button type="button" class="btn"  id="selectWebBtn">选择网站</button>
+				  </div>
+				  <br/><br/>
+				   <div class="form-group">
+				    <span>账户名称：</span>
+                    <span class="usernameList"></span>
+                    <button type="button" class="btn" id="selecUserBtn">选择用户</button>
 				  </div>
 				</form>
     		</div>
@@ -141,10 +140,13 @@
 				    <input type="text" class="form-control layer-date" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
 				  </div>
 				  <br/><br/>
-				  <div class="form-group">
-				    <span>账户名称：</span>
-                    <span class="usernameList"></span>
-                    <button type="button" class="btn" id="selecUserBtn">选择用户</button>
+				<div class="form-group">
+				    <label for="">信息状态:</label>
+				    <select class="form-control" class="infoState"style="height: 30px; width: 120px;">
+				    	<option value="1">待沟通</option>
+				    	<option value="1">已沟通</option>
+				    	<option value="1">沟通异常</option>
+				    </select>
 				  </div>
                   <br/><br/>
                   <div class="form-group">
@@ -195,7 +197,7 @@
     		<div class="infobtn">
     			<button type="button" class="buttonBlue"><i class="glyphicon glyphicon-search"></i>  查询</button>
     			<button type="button" class="buttonOrange" id="reviseInfoBtn"><i class="glyphicon glyphicon-edit"></i>  修改</button>
-    			<button type="button" class="buttonRed"><i class="glyphicon glyphicon-remove-sign"></i>  信息通报</button>
+    			<button type="button" class="buttonRed"><i class="glyphicon glyphicon-remove-sign"></i>  联系失败</button>
     			<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-list-alt"></i>  已沟通</button>
     			<button type="button" class="buttonBlue" id="passEmailBtn"><i class="glyphicon glyphicon-envelope"></i>  发送邮件</button>
     			<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-open"></i>  导出Excel</button>
@@ -349,10 +351,10 @@
 			    <!--<input type="text" class="form-control">-->
 			  <!--</div>-->
 			<!--</form>-->
-    		<div class="handlebtn">
-    			<button id='cancelBtn'>取消</button>
-    			<button id='submitBtn'>提交</button>
-    		</div>
+    		<!--<div class="handlebtn">-->
+    			<!--<button id='cancelBtn'>取消</button>-->
+    			<!--<button id='submitBtn'>提交</button>-->
+    		<!--</div>-->
     		<div class="selectbox">
 				<p>账号管理</p>
 				<form class="form-inline">
@@ -536,7 +538,10 @@
                               '<br />' +
                               '<div class="form-group">' +
                               '<label for="">处理意见：</label>' +
-                              '<select><option>加强监管</option></select>' +
+                              '<select>	<option>加强监管</option>'+
+    									'<option>信息删除</option>'+
+    									'<option>其他</option>'+
+    						  '</select>' +
                               '</div>' +
                               '<br />' +
                               '<div class="form-group">' +
@@ -549,18 +554,28 @@
                               '<button id="submitBtn">提交</button>' +
                               '</div>'
                           ;
+
                           con.append($(tr));
+
                       }
                   })
+                  
+                    //点击信息重置取消按钮关闭模态框
+			          $("#cancelBtn").click(function(){
+			          	$("#modal").hide();
+			          });
+			          //点击信息重置取消按钮关闭模态框
+			          $("#submitBtn").click(function(){
+			          	$("#modal").hide();
+			          });
               })
 
               $("#modal").show();
               $(".modalbg").show();
           });
-          $("#cancelBtn").click(function(){
-              alert("1");
-          	$("#modal").hide();
-          });
+          
+          
+          
           //点击选择
           $("#loginSelect").click(function(){
           	$(".selectbox").show();

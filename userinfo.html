@@ -58,10 +58,65 @@
 						+' </tr>');
 						con.append(tr);
 					})
-				})
-			
-			
-			
+				});
+				
+				
+/*	  $(function(){
+       		//搜索
+	        $("#search1").click(function(){
+					var mid = $("#message_id").val();
+					var munm = $("message_number").val();
+					var con = $(".mainbody");
+					$.getJSON("data/user.json",function(data){
+						con.html("");
+					$.each(data,function(index,obj){
+						
+						if(mid != null && munm != null){
+							if(mid == obj.id && munm == obj.SVID){
+								var tr = $('<tr class="gradeX">'+
+								'<td class="center" name="id">'+obj.id+'</td><td class="center" name="SVID">'+obj.SVID+'</td><td class="center">'+obj.NET_NAME+'</td>'+
+								'<td class="center">'+obj.NET_URL+'</td><td class="center">'+obj.CREATETIME+'</td> <td class="center">'+obj.DEAL_LASTR_TIME+'</td>'+
+								'<td class="center">'+obj.DESCRIPTION+'</td><td class="center"><input type="checkbox" value='+obj.SVID+"@"+obj.REPORT_TYPE_NAME+'/></td>'
+								+' </tr>');
+								con.append(tr);
+								return;
+							}
+							
+						}else if(mid != null){
+							if(mid == obj.id ){
+								var tr = $('<tr class="gradeX">'+
+								'<td class="center" name="id">'+obj.id+'</td><td class="center" name="SVID">'+obj.SVID+'</td><td class="center">'+obj.NET_NAME+'</td>'+
+								'<td class="center">'+obj.NET_URL+'</td><td class="center">'+obj.CREATETIME+'</td> <td class="center">'+obj.DEAL_LASTR_TIME+'</td>'+
+								'<td class="center">'+obj.DESCRIPTION+'</td><td class="center"><input type="checkbox" value='+obj.SVID+"@"+obj.REPORT_TYPE_NAME+'/></td>'
+								+' </tr>');
+								con.append(tr);
+								return;
+							}
+							
+						}else　if(munm != null){
+							if(munm == obj.SVID){
+								var tr = $('<tr class="gradeX">'+
+								'<td class="center" name="id">'+obj.id+'</td><td class="center" name="SVID">'+obj.SVID+'</td><td class="center">'+obj.NET_NAME+'</td>'+
+								'<td class="center">'+obj.NET_URL+'</td><td class="center">'+obj.CREATETIME+'</td> <td class="center">'+obj.DEAL_LASTR_TIME+'</td>'+
+								'<td class="center">'+obj.DESCRIPTION+'</td><td class="center"><input type="checkbox" value='+obj.SVID+"@"+obj.REPORT_TYPE_NAME+'/></td>'
+								+' </tr>');
+								con.append(tr);
+								return;
+							}
+						}else{
+							var tr = $('<tr class="gradeX">'+
+							'<td class="center" name="id">'+obj.id+'</td><td class="center" name="SVID">'+obj.SVID+'</td><td class="center">'+obj.NET_NAME+'</td>'+
+							'<td class="center">'+obj.NET_URL+'</td><td class="center">'+obj.CREATETIME+'</td> <td class="center">'+obj.DEAL_LASTR_TIME+'</td>'+
+							'<td class="center">'+obj.DESCRIPTION+'</td><td class="center"><input type="checkbox" value='+obj.SVID+"@"+obj.REPORT_TYPE_NAME+'/></td>'
+							+' </tr>');
+							con.append(tr);
+						}
+					})
+				});
+	        
+	        })
+       })
+			*/
 			
 			
 	
@@ -73,7 +128,7 @@
     			<form class="form-inline top">
 				  <div class="form-group">
 				    <label for="">信息ID：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-				    <input type="text" class="form-control" id="">
+				    <input type="text" class="form-control" id="message_id">
 				  </div>
 				</form>
 				<br />
@@ -92,7 +147,7 @@
     			<form class="form-inline top">
 				  <div class="form-group">
 				    <label for="">信息编号：</label>
-				    <input type="text" class="form-control" id="">
+				    <input type="text" class="form-control" id="message_number">
 				  </div>
 				</form>
 				<br />
@@ -126,7 +181,7 @@
 				  </div>
 				</form>
     		</div>
-    		<button type="button" class="infosearch"><i class="glyphicon glyphicon-search"></i>   查询</button>
+    		<button type="button" class="infosearch" id="search1"><i class="glyphicon glyphicon-search"></i>   查询</button>
     		<button type="button" class="infoedit" id="infoReset"><i class="glyphicon glyphicon-edit"></i>信息处置</button>
     	</div>
     	
@@ -255,6 +310,11 @@
           	$("#modal").hide();
           });
           
+           //点击取消按钮关闭模态框
+          $("#submitBtn").click(function(){
+          	$("#modal").hide();
+          });
+          
         });
         
         //日期范围限制
@@ -283,6 +343,12 @@
         };
         laydate(start);
         laydate(end);
+        
+        
+      
+        
+        
+   
     </script>
 </body>
 </html>

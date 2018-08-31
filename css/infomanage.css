@@ -39,6 +39,7 @@ ul{
 	height: 30px;
 }
 .wrap .info .boxone button{
+	width: 120px;
 	height: 30px;
 	line-height: 30px;
 	padding-top: 0;
@@ -244,11 +245,12 @@ ul{
 }
 
 .modal #auditSuccessedBg{
-	width: 53%;
+	width: 32%;
 	min-width: 320px;
 	height: 220px;
-	margin: 10% 0px 0px 20%;
+	margin: 10% 0px 0px 30%;
 	background: #fff;
+	align-content: center;
 	display: none;
 }
 .modal #auditSuccessedBg .font{
@@ -281,11 +283,12 @@ ul{
 }
 
 .modal #auditFailedBg{
-	width: 53%;
+	width: 32%;
 	min-width: 320px;
 	height: 220px;
-    margin: 10% 0px 0px 20%;
+	margin: 10% 0px 0px 30%;
 	background: #fff;
+	align-content: center;
 	display: none;
 }
 .modal #auditFailedBg .head{
@@ -332,11 +335,12 @@ ul{
 }
 
 .modal #infoBellBg{
-	width: 53%;
+	width: 32%;
 	min-width: 320px;
 	height: 220px;
-	margin: 10% 0px 0px 20%;
+	margin: 10% 0px 0px 30%;
 	background: #fff;
+	align-content: center;
 	display: none;
 }
 .modal #infoBellBg .font{
@@ -369,11 +373,12 @@ ul{
 }
 
 .modal #trashBg{
-	width: 53%;
+	width: 32%;
 	min-width: 320px;
 	height: 220px;
-	margin: 10% 0px 0px 20%;
+	margin: 10% 0px 0px 30%;
 	background: #fff;
+	align-content: center;
 	display: none;
 }
 .modal #trashBg .font{
@@ -406,8 +411,8 @@ ul{
 }
 
 .modal #websit{
-	width: 53%;
-	min-width: 320px;
+	width: 43%;
+	min-width: 360px;
 	height: 220px;
     margin: 10% 0px 0px 20%;
 	background: #fff;
@@ -496,8 +501,8 @@ ul{
 }
 
 .modal #userList{
-	width: 53%;
-	min-width: 320px;
+	width: 43%;
+	min-width: 360px;
 	height: 220px;
     margin: 10% 0px 0px 20%;
 	background: #fff;
