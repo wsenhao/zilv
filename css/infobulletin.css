@@ -42,7 +42,7 @@ ul{
 .wrap .info .boxone .form-group input{
 	width: 90px;
 	height: 25px;
-	font-size: 3px;
+	font-size: 10px;
 }
 .wrap .info .boxone .form-group select{
 	height: 25px;
@@ -50,7 +50,7 @@ ul{
 .wrap .info .boxtwo .form-group input{
 	width: 90px;
 	height: 25px;
-	font-size: 3px;
+	font-size: 10px;
 }
 .wrap .info .boxtwo .form-group select{
 	height: 25px;
@@ -58,7 +58,7 @@ ul{
 .wrap .info .boxthr .form-group input{
 	width: 90px;
 	height: 25px;
-	font-size: 3px;
+	font-size: 10px;
 }
 .wrap .info .boxthr .form-group select{
 	height: 25px;
