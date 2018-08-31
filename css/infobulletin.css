@@ -440,3 +440,99 @@ ul{
 	border: 2px solid #A0A0A0;
 	border-radius: 100px;
 }
+
+
+
+
+
+
+.modal #relationOn{
+	width: 32%;
+	min-width: 320px;
+	height: 220px;
+	margin: 10% 0px 0px 30%;
+	background: #fff;
+	align-content: center;
+	display: none;
+}
+.modal #relationOn .font{
+	margin-top: 30px	;
+	line-height: 30px;
+	text-align: center;
+}
+.modal #relationOn .head{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	background: #427CEA;
+}
+.modal #relationOn #relationSubmitbtn1{
+	margin-top: 40px;
+	margin-left: 120px;
+	width: 80px;
+	border-radius: 3px;
+	background: #3E79ED;
+	color: #fff;
+}
+.modal #relationOn #relationCancelbtn1{
+	margin-top: 40px;
+	margin-left: 150px;
+	width: 80px;
+	border-radius: 3px;
+	background: #DBDBDB;
+}
+
+.modal #relationNo{
+	width: 32%;
+	min-width: 320px;
+	height: 220px;
+	margin: 10% 0px 0px 30%;
+	background: #fff;
+	align-content: center;
+	display: none;
+}
+.modal #relationNo .head{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	background: #427CEA;
+}
+.modal #relationNo textarea{
+	width: 96%;
+	margin:10px 2%;
+}
+.modal #relationNo div{
+	text-align: right;
+}
+
+.modal #relationNo #auditSubmitbtn{
+	height: 20px;
+	line-height: 20px;
+	border: 0;
+	padding: 0;
+	padding-left: 20px;
+	padding-right: 20px;
+	background: #427CEA;
+	font-size: 12px;
+	border-radius: 2px;
+	color: #fff;
+	 box-shadow: -2px 0 0 rgba(62,121,237, 0.08), /*左边阴影*/ 2px 0 0 rgba(62,121,237, 0.08), /*右部阴影*/ 0 7px 10px rgba(62,121,237, 0.2);
+}
+.modal #relationNo #auditCancelbtn{
+	margin-right: 10px;
+	height: 20px;
+	line-height: 20px;
+	border: 0;
+	padding: 0;
+	padding-left: 20px;
+	padding-right: 20px;
+	background: #DBDBDB;
+	font-size: 12px;
+	border-radius: 2px;
+	color: #fff;
+	 box-shadow: -2px 0 0 rgba(62,121,237, 0.08), /*左边阴影*/ 2px 0 0 rgba(62,121,237, 0.08), /*右部阴影*/ 0 7px 10px rgba(62,121,237, 0.2);
+}

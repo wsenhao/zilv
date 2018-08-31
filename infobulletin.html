@@ -84,7 +84,7 @@
 						var tr = $('<tr class="gradeX">'+
 						'<td class="center" name="id">'+obj.id+'</td><td class="center" name="SVID">'+obj.SVID+'</td><td class="center">'+obj.NET_NAME+'</td>'+
 						'<td class="center">'+obj.NET_URL+'</td><td class="center">'+obj.BODY_FIXED_PHONE+'['+obj.BODY_PHONE+']</td> <td class="center">'+obj.BODY_EMAIL+'</td>'+
-						'<td class="center">'+obj.REPORT_TYPE+'</td><td class="center"><input type="checkbox" data-id="'+obj.id+'"/></td>'
+						'<td class="center">'+obj.REPORT_TYPE+'</td><td class="center"><input type="checkbox" data-id="'+obj.id+'" value = "'+obj.id+'"/></td>'
 						+' </tr>');
 						con.append(tr);
 					})
@@ -197,8 +197,8 @@
     		<div class="infobtn">
     			<button type="button" class="buttonBlue"><i class="glyphicon glyphicon-search"></i>  查询</button>
     			<button type="button" class="buttonOrange" id="reviseInfoBtn"><i class="glyphicon glyphicon-edit"></i>  修改</button>
-    			<button type="button" class="buttonRed"><i class="glyphicon glyphicon-remove-sign"></i>  联系失败</button>
-    			<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-list-alt"></i>  已沟通</button>
+    			<button type="button" class="buttonRed" id="buttonRed1"><i class="glyphicon glyphicon-remove-sign"></i>  联系失败</button>
+    			<button type="button" class="buttonGreen" id="buttonGreen1"><i class="glyphicon glyphicon-list-alt"></i>  已沟通</button>
     			<button type="button" class="buttonBlue" id="passEmailBtn"><i class="glyphicon glyphicon-envelope"></i>  发送邮件</button>
     			<button type="button" class="buttonGreen"><i class="glyphicon glyphicon-open"></i>  导出Excel</button>
     		</div>
@@ -439,6 +439,35 @@
                 <button type="button" id="userCancelbtn">取消</button>
             </div>
         </div>
+        
+        <!--联系成功 -->
+        <div id="relationOn">
+            <div class="head">信息标记</div>
+            <p class="font" id="relationCon"></p>
+            <div>
+                <button type="button" id="relationSubmitbtn1">是</button>
+                <button type="button" id="relationCancelbtn1">否</button>
+            </div>
+        </div>
+
+
+
+    	<!--联系失败-->
+    	<div id="relationNo">
+    		<div class="head">详细情况描述</div>
+    		&nbsp;&nbsp;&nbsp;<span>联系异常原因:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    		<select id="selelct_option">
+    			<option value="0">联系方式虚假</option>
+    			<option value="1">无人接听</option>
+    			<option value="2">其他</option>
+    		</select>
+    		<textarea rows="4"></textarea>
+    		<div>
+    			<button type="button" id="relationSubmitbtn2">提交</button>
+    			<button type="button" id="relationCancelbtn2">取消</button>
+    		</div>
+    	</div>
+        
 
     </div>
 
@@ -584,28 +613,110 @@
           	$(".selectbox").hide();
           });
 
-            //选择网站名称点击事件
-            $("#selectWebBtn").click(function(){
-                $("#modal").show();
-                $("#websit").show();
-                $(".modalbg").hide();
-                $("#userList").hide();
-            });
-            $("#websitCancelbtn").click(function(){
-                $("#modal").hide();
-            });
+        //选择网站名称点击事件
+        $("#selectWebBtn").click(function(){
+            $("#modal").show();
+            $("#websit").show();
+            $(".modalbg").hide();
+            $("#userList").hide();
+            $("#relationNo").hide();
+         	$("#relationOn").hide();
+        });
+        $("#websitCancelbtn").click(function(){
+            $("#modal").hide();
+        });
 
-            //选择用户点击事件
-            $("#selecUserBtn").click(function(){
-                $("#modal").show();
-                $("#websit").hide();
-                $(".modalbg").hide();
-                $("#userList").show();
-            });
-            $("#userCancelbtn").click(function(){
-                $("#modal").hide();
-            });
-
+        //选择用户点击事件
+        $("#selecUserBtn").click(function(){
+            $("#modal").show();
+            $("#websit").hide();
+            $(".modalbg").hide();
+            $("#userList").show();
+             $("#relationNo").hide();
+         	$("#relationOn").hide();
+        });
+        $("#userCancelbtn").click(function(){
+            $("#modal").hide();
+        });
+            
+            
+         
+           	  //标记已联系框
+          $("#buttonGreen1").click(function(){
+          	 //获得以选中的信息
+             var arra = $(".mainbody input:checked");
+             var str = "[";
+             
+             if(arra.length < 1){
+             	alert("至少选着一条信息！！");
+             	return;
+             }
+             $("#modal").show();
+             $(".modalbg").hide();
+             $("#websit").hide();
+             $("#userList").hide();
+             $("#relationNo").hide();
+             $("#relationOn").show();
+             
+            
+             $.each(arra,function(index,obj){
+             	if(index == arra.length -1 ){
+             		str = str + obj.value+"]";
+             	}else{
+             		str = str + obj.value+",";
+             	}
+             })
+             $("#relationCon").html("是否对信息"+str+"审核通过？");
+          });
+          
+          $("#relationSubmitbtn1").click(function(){
+          		$("#modal").hide();
+            	$("#relationOn").hide();
+            	$("#relationCon").html("");
+          })
+          
+          $("#relationCancelbtn1").click(function(){
+          		$("#modal").hide();
+            	$("#relationOn").hide();
+            	$("#relationCon").html("");
+          })
+          
+          
+          
+          
+          
+          //标记联系异常信息
+          $("#buttonRed1").click(function(){
+          	 //获得以选中的信息
+             var arra = $(".mainbody input:checked");
+             var str = "[";
+             
+             if(arra.length < 1){
+             	alert("至少选着一条信息！！");
+             	return;
+             }
+             $("#modal").show();
+             $(".modalbg").hide();
+             $("#websit").hide();
+             $("#userList").hide();
+             $("#relationNo").show();
+             $("#relationOn").hide();
+          });
+           	
+          $("#relationSubmitbtn2").click(function(){
+          		$("#modal").hide();
+            	$("#relationOn").hide();
+          })
+          
+          $("#relationCancelbtn2").click(function(){
+          		$("#modal").hide();
+            	$("#relationOn").hide();
+          })
+          
+          
+          
+          
+          
         });
 
         //日期范围限制
@@ -634,6 +745,10 @@
         };
         laydate(start);
         laydate(end);
+        
+        
+        
+        
     </script>
 </body>
 </html>

@@ -278,6 +278,11 @@
           
           //点击信息重置触发事件
           $("#infoReset").click(function(){
+          	var arr = $(".mainbody input:checked");
+          	if(arr.length<1){
+          		alert("请选着一行数据再操作！！");
+          		return;
+          	}
           	$("#number1").html("");
           	$("#categray01").html("");
           	//获得被标记内容

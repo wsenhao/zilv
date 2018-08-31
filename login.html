@@ -81,7 +81,12 @@
 					alert("验证码错误");
 					return;
 				}
-
+				
+				if(loginname == 'admin' && loginpwd == 'admin'){
+                    location.href = "index.html?role=admin";
+                    return;
+                }
+				
 				if(loginname == 'manager' && loginpwd == 'manager'){
                     location.href = "index.html?role=manager";
                     return;
@@ -91,7 +96,6 @@
                     location.href = "index.html?role=user";
                     return;
                 }
-
                 alert("用户名密码错误");
 
 			});
