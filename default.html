@@ -109,12 +109,18 @@
 				var myChart = echarts.init(document.getElementById('main2'));
 				option = {
 					title: {
-						text: '举报信息趋势图'
+						text: '举报信息趋势图\n',
+						left: 'center'
 					},
 					tooltip: {
 						trigger: 'axis'
 					},
 					legend: {
+						type: 'scroll',
+				        orient: 'vertical',
+				        right: 10,
+				        top: 20,
+				        bottom: 20,
 						data: ['涉黄信息', '暴恐信息', '低俗信息', '宗教极端信息', '涉赌信息']
 					},
 					grid: {
@@ -131,7 +137,7 @@
 					xAxis: {
 						type: 'category',
 						boundaryGap: false,
-						data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月']
+						data: ['一月', '二月', '三月', '四月', '五月', '六月']
 					},
 					yAxis: {
 						type: 'value'
@@ -140,31 +146,31 @@
 							name: '涉黄信息',
 							type: 'line',
 							stack: '总量',
-							data: [120, 132, 101, 134, 90, 30, 110]
+							data: [120, 132, 101, 134, 90, 30]
 						},
 						{
 							name: '暴恐信息',
 							type: 'line',
 							stack: '总量',
-							data: [220, 182, 191, 234, 190, 130, 110]
+							data: [220, 182, 191, 234, 190, 130]
 						},
 						{
 							name: '低俗信息',
 							type: 'line',
 							stack: '总量',
-							data: [150, 232, 201, 154, 190, 330, 310]
+							data: [150, 232, 201, 154, 190, 330]
 						},
 						{
 							name: '宗教极端信息',
 							type: 'line',
 							stack: '总量',
-							data: [320, 332, 301, 334, 190, 130, 120]
+							data: [320, 332, 301, 334, 190, 130]
 						},
 						{
 							name: '涉赌信息',
 							type: 'line',
 							stack: '总量',
-							data: [820, 932, 901, 934, 190, 130, 120]
+							data: [820, 932, 901, 934, 190, 130]
 						}
 					]
 				};
@@ -236,7 +242,7 @@
 				var myChart = echarts.init(document.getElementById('main2'));
 				option = {
 					title: {
-						text: '举报信息趋势图'
+						text: ''
 					},
 					tooltip: {
 						trigger: 'axis'
